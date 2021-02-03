@@ -1,0 +1,40 @@
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - init
+  - deploy_qa
+  - deploy_prod
+
+init:
+  stage: init
+  image: node:12.16.1
+  script:
+    - npm install
+
+deploy_qa:
+  image: node:12.16.1
+  stage: deploy_qa
+  script:
+    - git push https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/hazlazuardi.git HEAD:master
+    - echo "Deployed to hazlazuardi server"
+  environment:  
+    name: qa
+    url: https://hazlazuardi.herokuapp.com/
+  only:
+    - master
+
+
+deploy_production:
+  image: node:12.16.1
+  stage: deploy_prod
+  script:
+    - git push https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/hazlazuardi-prod.git HEAD:master
+    - echo "Deployed to production server"
+  environment:  
+    name: production
+    url: https://hazlazuardi-prod.herokuapp.com/
+  only:
+    - master

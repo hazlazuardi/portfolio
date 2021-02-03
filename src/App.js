@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import React, { Fragment, Suspense } from 'react';
+import { CssBaseline, ThemeProvider, withWidth } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { HazTheme } from './theme';
+import { urls } from './urls';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Drawer from './components/Drawer';
+import TabBar from './components/TabBar';
+
+const useStyles = makeStyles((theme) => ({
+	content: {
+		position: 'absolute',
+		top: '0em',
+		[theme.breakpoints.up('sm')]: {
+			position: 'absolute',
+			top: '4em'
+		},
+		width: '100%'
+	}
+}));
+
+const theme = HazTheme;
+
+const pages = urls;
+
+const FallBackSuspense = () => {
+	return <h1>Loading..</h1>;
+};
+function App(props) {
+	const classes = useStyles();
+	return (
+		<Fragment>
+			<CssBaseline />
+			<ThemeProvider theme={theme}>
+				<Router>
+					<Suspense fallback={<FallBackSuspense />}>
+						{
+							props.width === 'xs' ? <TabBar /> :
+							<Drawer />}
+						{/* <Hidden smUp />
+						<Hidden xsDown>
+							<Drawer />
+						</Hidden> */}
+						<div className={classes.content}>
+							{pages.map(({ path, component }, key) => (
+								<Route exact path={path} component={component} key={key} />
+							))}
+						</div>
+					</Suspense>
+				</Router>
+			</ThemeProvider>
+		</Fragment>
+	);
 }
 
-export default App;
+export default withWidth()(App);
