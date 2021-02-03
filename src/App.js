@@ -9,6 +9,9 @@ import { urls } from './urls';
 import Drawer from './components/Drawer';
 import TabBar from './components/TabBar';
 
+// PWA IOS
+import useIsIOS from './useIsIOS';
+
 const useStyles = makeStyles((theme) => ({
 	content: {
 		position: 'absolute',
@@ -30,10 +33,14 @@ const FallBackSuspense = () => {
 };
 function App(props) {
 	const classes = useStyles();
+
+	// PWA IOS
+	const { prompt } = useIsIOS();
 	return (
 		<Fragment>
 			<CssBaseline />
 			<ThemeProvider theme={theme}>
+				{prompt && alert('Install PWA')}
 				<Router>
 					<Suspense fallback={<FallBackSuspense />}>
 						{
