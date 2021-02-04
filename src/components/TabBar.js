@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 	}
 });
 
-export default function TabBar() {
+export default function TabBar(props) {
 	const [ value, setValue ] = useState(window.location.pathname);
 	const classes = useStyles();
 	console.log(value);

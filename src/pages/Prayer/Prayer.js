@@ -61,22 +61,25 @@ function Prayer() {
 
 	useEffect(() => {
 		let mounted = true;
-		if (mounted) {
-			const options = {
-				method: 'GET',
-				url: `https://api.banghasan.com/sholat/format/json/jadwal/kota/700/tanggal/${today()}`
-			};
+		const options = {
+			method: 'GET',
+			url: `https://api.banghasan.com/sholat/format/json/jadwal/kota/700/tanggal/${today()}`
+		};
 
-			axios
-				.request(options)
-				.then(function(response) {
+		axios
+			.request(options)
+			.then(function(response) {
+				if (mounted) {
 					console.table(response.data.jadwal.data);
 					setData(response.data.jadwal.data);
-				})
-				.catch(function(error) {
-					console.error(error);
-				});
-		}
+				}
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+		return () => {
+			mounted = false;
+		};
 	}, []);
 
 	console.log(data);
