@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { urls as pages } from '../urls';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import Typography from '@material-ui/core/Typography';
+import { Box, Container } from '@material-ui/core';
 
 const useStyles = makeStyles({
 	root: {
@@ -22,6 +24,7 @@ const useStyles = makeStyles({
 });
 
 export default function TabBar(props) {
+	const { logo } = props;
 	const [ value, setValue ] = useState(window.location.pathname);
 	const classes = useStyles();
 	console.log(value);

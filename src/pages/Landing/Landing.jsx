@@ -23,17 +23,17 @@ const useStyles = makeStyles((theme) => ({
 	afterlifeImg: {},
 	section: {
 		position: 'relative',
-		top: '0em',
-		height: 'calc(100vh - 5em)'
+		top: '-4em',
+		height: 'calc(100vh - 0em)'
 	},
 	[theme.breakpoints.down('xs')]: {
 		section: {
 			top: '0em',
 			height: 'calc(100vh - 6em)'
-		},
-		body: {
-			marginBottom: '6em'
 		}
+	},
+	body: {
+		marginBottom: '6em'
 	}
 }));
 
