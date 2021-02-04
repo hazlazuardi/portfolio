@@ -77,6 +77,7 @@ function Prayer() {
 					console.error(error);
 				});
 		}
+		return (mounted = false);
 	}, []);
 
 	console.log(data);

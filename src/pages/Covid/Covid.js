@@ -75,6 +75,7 @@ function Covid() {
 						console.error(error);
 					});
 			}
+			return (mounted = false);
 		},
 		[ data ]
 	);
