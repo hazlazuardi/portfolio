@@ -23,8 +23,8 @@ const useStyles = makeStyles({
 	}
 });
 
-export default function TabBar(props) {
-	const { logo } = props;
+export default function TabBar() {
+
 	const [ value, setValue ] = useState(window.location.pathname);
 	const classes = useStyles();
 	console.log(value);
