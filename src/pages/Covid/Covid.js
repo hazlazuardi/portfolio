@@ -51,33 +51,34 @@ function Covid() {
 		}
 	};
 
-	useEffect(
-		() => {
-			let mounted = true;
-			if (mounted) {
-				const options = {
-					method: 'GET',
-					url: 'https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/total',
-					params: { country: 'Indonesia' },
-					headers: {
-						'x-rapidapi-key': '5a78f7e36bmsh9d1a51dd9f68cc4p12c7a2jsn492ba90ee3f4',
-						'x-rapidapi-host': 'covid-19-coronavirus-statistics.p.rapidapi.com'
-					}
-				};
-
-				axios
-					.request(options)
-					.then(function(response) {
-						console.table(response.data.data);
-						setData(response.data.data);
-					})
-					.catch(function(error) {
-						console.error(error);
-					});
+	useEffect(() => {
+		let mounted = true;
+		const options = {
+			method: 'GET',
+			url: 'https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/total',
+			params: { country: 'Indonesia' },
+			headers: {
+				'x-rapidapi-key': '5a78f7e36bmsh9d1a51dd9f68cc4p12c7a2jsn492ba90ee3f4',
+				'x-rapidapi-host': 'covid-19-coronavirus-statistics.p.rapidapi.com'
 			}
-		},
-		[ data ]
-	);
+		};
+
+		axios
+			.request(options)
+			.then(function(response) {
+				if (mounted) {
+					console.table(response.data.data);
+					setData(response.data.data);
+				}
+			})
+			.catch(function(error) {
+				console.error(error);
+			});
+
+		return () => {
+			mounted = false;
+		};
+	}, []);
 
 	console.log(data);
 
