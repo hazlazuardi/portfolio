@@ -5,7 +5,6 @@ import AfterlifeImg from '../../media/img/afterlife.webp';
 
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -15,8 +14,12 @@ import Paper from '@material-ui/core/Paper';
 // Import using React lazy() to code-splitting, improving initial load performance
 
 const useStyles = makeStyles((theme) => ({
-	gridPic: {},
-	gridText: {},
+	gridPic: {
+		// backgroundColor: 'blue'
+	},
+	gridText: {
+		// backgroundColor: 'red'
+	},
 	afterlifeImg: {},
 	section: {
 		position: 'relative',
@@ -26,8 +29,11 @@ const useStyles = makeStyles((theme) => ({
 	[theme.breakpoints.down('xs')]: {
 		section: {
 			top: '0em',
-			height: 'calc(100vh - 5em)'
+			height: 'calc(100vh - 6em)'
 		}
+	},
+	body: {
+		marginBottom: '6em'
 	}
 }));
 
@@ -38,7 +44,7 @@ function Landing(props) {
 
 	console.log(props.width);
 	return (
-		<div>
+		<div className={classes.body}>
 			<Grid container className={classes.section}>
 				<Grid className={classes.gridPic} item xs={12} sm={7}>
 					<Box flexShrink={1} display="flex" justifyContent="center" alignItems="center" minHeight="100%">
@@ -59,12 +65,17 @@ function Landing(props) {
 						flexShrink={2}
 						display="flex"
 						justifyContent="flex-start"
-						alignItems="center"
+						alignItems={
+
+								props.width === 'xs' ? 'flex-start' :
+								'center'
+						}
 						minHeight="100%"
 					>
 						<Container>
+							<Typography variant="subtitle1">Photography</Typography>
 							<Typography variant="h4">The Afterlife</Typography>
-							<Typography>Melasti Beach, Bali</Typography>
+							<Typography variant="subtitle2">Melasti Beach, Bali</Typography>
 							<br />
 							<Button variant="contained" color="primary">
 								My Works
@@ -73,9 +84,9 @@ function Landing(props) {
 					</Box>
 				</Grid>
 			</Grid>
-			<Divider />
+
 			<Grid container className={classes.section}>
-				<Grid className={classes.gridPic} item xs={12} sm={6}>
+				<Grid style={{ backgroundColor: 'black' }} item xs={12} sm={6}>
 					<Box display="flex" justifyContent="center" alignItems="center" minHeight="100%">
 						<Typography>Hello World!</Typography>
 					</Box>

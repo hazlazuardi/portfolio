@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import MenuIcon from '@material-ui/icons/Menu';
-
 import { urls as pages } from '../urls';
 import { Link } from 'react-router-dom';
 
@@ -24,11 +24,22 @@ const useStyles = makeStyles({
 		backdropFilter: 'blur(10px)',
 		boxShadow: 'none'
 	},
-	logo: {
+	logoTxt: {
 		color: 'black'
 	},
+	logoImgContainer: {
+		position: 'block',
+		left: 0,
+		overflow: 'hidden',
+		height: '3em',
+		marginLeft: '-2em'
+	},
+	logoImg: {
+		height: '5em',
+		marginLeft: '.5em'
+	},
 	toggleBurger: {
-		position: 'fixed',
+		position: 'absolute',
 		right: 0
 	},
 	drawer: {
@@ -44,12 +55,15 @@ const useStyles = makeStyles({
 	}
 });
 
-export default function SwipeableTemporaryDrawer() {
+export default function SwipeableTemporaryDrawer(props) {
+	const { logo } = props;
 	const classes = useStyles();
 	const [ state, setState ] = useState({
 		right: false
 	});
 	const [ value, setValue ] = useState(window.location.pathname);
+
+	const history = useHistory();
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -89,6 +103,7 @@ export default function SwipeableTemporaryDrawer() {
 						key={index}
 						component={Link}
 						to={path}
+						variant="primary"
 					>
 						<ListItemIcon>{icon}</ListItemIcon>
 						<ListItemText primary={label} />
@@ -104,7 +119,10 @@ export default function SwipeableTemporaryDrawer() {
 				<React.Fragment key={anchor}>
 					<AppBar className={classes.appBar}>
 						<Toolbar>
-							<Typography className={classes.logo}>Haz Lazuardi</Typography>
+							<Button onClick={() => history.push('/')} className={classes.logoImgContainer}>
+								<img src={logo} alt="" className={classes.logoImg} />
+							</Button>
+							{/* <Typography className={classes.logoTxt}>Haz Lazuardi</Typography> */}
 							<Button onClick={toggleDrawer(anchor, true)} className={classes.toggleBurger}>
 								<MenuIcon />
 							</Button>

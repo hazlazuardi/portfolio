@@ -8,9 +8,10 @@ import { urls } from './urls';
 
 import Drawer from './components/Drawer';
 import TabBar from './components/TabBar';
-
+import logo from './logo.svg';
 // PWA IOS
-import useIsIOS from './useIsIOS';
+// import useIsIOS from './useIsIOS';
+import PWAPrompt from 'react-ios-pwa-prompt';
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -35,17 +36,24 @@ function App(props) {
 	const classes = useStyles();
 
 	// PWA IOS
-	const { prompt } = useIsIOS();
+	// const { prompt } = useIsIOS();
 	return (
 		<Fragment>
 			<CssBaseline />
 			<ThemeProvider theme={theme}>
-				{prompt && alert('Install PWA')}
+				{/* {prompt && alert('Install PWA')} */}
+				<PWAPrompt
+					promptOnVisit={1}
+					timesToShow={5}
+					copyClosePrompt="Close"
+					permanentlyHideOnDismiss={false}
+					debug={false}
+				/>
 				<Router>
 					<Suspense fallback={<FallBackSuspense />}>
 						{
-							props.width === 'xs' ? <TabBar /> :
-							<Drawer />}
+							props.width === 'xs' ? <TabBar logo={logo} /> :
+							<Drawer logo={logo} />}
 						{/* <Hidden smUp />
 						<Hidden xsDown>
 							<Drawer />

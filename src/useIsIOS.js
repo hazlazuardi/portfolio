@@ -24,13 +24,15 @@ function checkForIOS() {
 	return { isIOS, isSafari, prompt };
 }
 
-export default function useIsIOS() {
-	const [ isIOS, setIsIOS ] = useState({});
+console.log(checkForIOS());
 
-	useEffect(() => {
-		setIsIOS(checkForIOS());
-		return () => console.log('CLEANUP INSTALL PROMPT', isIOS);
-	}, []);
+// export default function useIsIOS() {
+// 	const [ isIOS, setIsIOS ] = useState({ isIOS: false });
 
-	return isIOS;
-}
+// 	useEffect(() => {
+// 		setIsIOS(checkForIOS());
+// 		return () => console.log('CLEANUP INSTALL PROMPT', isIOS);
+// 	}, []);
+
+// 	return isIOS;
+// }
