@@ -7,6 +7,8 @@ import TimeLapseIcon from '@material-ui/icons/Timelapse';
 const Landing = lazy(() => import('./pages/Landing/Landing'));
 const Covid = lazy(() => import('./pages/Covid/Covid'));
 const Prayer = lazy(() => import('./pages/Prayer/Prayer'));
+const Todo = lazy(() => import('./pages/Todo/Todo'));
+
 export const urls = [
 	{
 		id: 0,
@@ -27,6 +29,13 @@ export const urls = [
 		label: 'Prayer Time',
 		path: '/Prayer',
 		component: Prayer,
+		icon: <TimeLapseIcon />
+	},
+	{
+		id: 3,
+		label: 'Todo',
+		path: '/Todo',
+		component: Todo,
 		icon: <TimeLapseIcon />
 	}
 ];
