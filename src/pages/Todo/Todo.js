@@ -4,6 +4,9 @@ import { Redirect } from 'react-router-dom';
 
 import axios from 'axios';
 
+const urlTodos = 'https://hazlazuardi.herokuapp.com/api/todos/';
+// const urlTodos = 'http://localhost:8100/api/todos/';
+
 function Todo() {
 	console.log(localStorage.AuthToken);
 

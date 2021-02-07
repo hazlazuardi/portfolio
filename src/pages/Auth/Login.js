@@ -7,7 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import { Button, Container, Typography } from '@material-ui/core';
 import { Redirect, useHistory } from 'react-router-dom';
 
-const urlToken = 'http://localhost:8100/api-token-auth/';
+const urlToken = 'https://hazlazuardi.herokuapp.com/api-token-auth/';
+// const urlToken = 'http://localhost:8100/api-token-auth/';
 // const urlTodos = 'http://localhost:8100/api/todos/';
 
 function Login() {
