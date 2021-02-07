@@ -20,7 +20,7 @@ function Todo() {
 			let mounted = true;
 			const options = {
 				method: 'GET',
-				url: 'http://localhost:8100/api/todos/',
+				url: urlTodos,
 				headers: {
 					Authorization: `JWT ${authToken}`
 				}
