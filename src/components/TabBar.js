@@ -1,6 +1,6 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { urls as pages } from '../urls';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -22,13 +22,21 @@ const useStyles = makeStyles({
 });
 
 export default function TabBar(props) {
-	const [ value, setValue ] = useState(window.location.pathname);
+	let location = useLocation();
+	const [ path, setPath ] = useState(location.pathname);
 	const classes = useStyles();
-	console.log(value);
-	const handleChange = (event, newValue) => {
-		setValue(newValue);
+	console.log(path);
+	const handleChange = (event, newPath) => {
+		setPath(newPath);
 	};
 
+	useEffect(
+		() => {
+			setPath(location.pathname);
+			console.log(path);
+		},
+		[ location, path, setPath ]
+	);
 	// It is a MUST to declare 'value' because the parent will read the value from its children
 	// If we don't declare the 'value, they'll use default value, which is index.
 	// We want our value var to be pathname, so we declare each child's value with path
@@ -36,7 +44,7 @@ export default function TabBar(props) {
 
 	return (
 		<Fragment>
-			<BottomNavigation value={value} onChange={handleChange} showLabels className={classes.root}>
+			<BottomNavigation value={path} onChange={handleChange} showLabels className={classes.root}>
 				{pages.map(({ path, label, icon }, key) => (
 					<BottomNavigationAction
 						key={key}
