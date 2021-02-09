@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useCallback } from 'react';
 import TodoList from './TodoList';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -11,49 +11,49 @@ function Todo() {
 	console.log(localStorage.AuthToken);
 
 	const [ data, setData ] = useState([]);
-
+	const [ isLoading, setIsLoading ] = useState(true);
+	const [ error, setError ] = useState('');
+	const history = useHistory();
 	// const { Provider, Consumer } = createContext();
 
 	const authToken = localStorage.getItem('AuthToken');
-	useEffect(
-		() => {
-			let mounted = true;
-			const options = {
-				method: 'GET',
-				url: urlTodos,
+
+	const getAllTodos = useCallback(async () => {
+		await axios
+			.get(urlTodos, {
 				headers: {
 					Authorization: `JWT ${authToken}`
 				}
-			};
+			})
+			.then((res) => {
+				setData(res.data);
+				setIsLoading(false);
+				console.log(data);
+			})
+			.catch((err) => {
+				setError(err);
+				localStorage.removeItem('AuthToken');
+				history.push('/login');
+				return <h1>{{ error }}</h1>;
+			});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-			if (mounted) {
-				axios
-					.request(options)
-					.then((res) => {
-						let data = res.data;
-						if (data) {
-							console.log(data);
-							setData(data);
-						}
-					})
-					.catch((err) => {
-						console.log('login failed');
-					});
-			}
-
-			return () => {
-				mounted = false;
-			};
+	useEffect(
+		() => {
+			getAllTodos();
+			// eslint-disable-next-line react-hooks/exhaustive-deps
 		},
-		[ authToken ]
+		[ getAllTodos ]
 	);
 
+    
 	return (
 		// <Provider value={data}>
 		<Fragment>
 			{
-				localStorage.AuthToken ? <TodoList data={data} /> :
-				<Redirect to="/login" />}
+				!isLoading ? <TodoList data={data} /> :
+				<p>Loading..</p>}
 		</Fragment>
 		// </Provider>
 	);

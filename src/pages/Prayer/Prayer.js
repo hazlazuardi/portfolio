@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 
+import {useHistory} from 'react-router-dom';
 import CardContent from '@material-ui/core/CardContent';
 import Container from '@material-ui/core/Container';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -19,6 +20,9 @@ function today() {
 
 function Prayer() {
 	const [ data, setData ] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+
+	const history = useHistory();
 
 	const dataKeys = {
 		ashar: {
@@ -60,27 +64,41 @@ function Prayer() {
 	};
 
 	useEffect(() => {
-		let mounted = true;
 		const options = {
 			method: 'GET',
 			url: `https://api.banghasan.com/sholat/format/json/jadwal/kota/700/tanggal/${today()}`
 		};
+		const prayerData = JSON.parse(localStorage.getItem('PrayerData'));
+		const prayerUpdate = localStorage.getItem('PrayerUpdate');
 
-		axios
-			.request(options)
-			.then(function(response) {
-				if (mounted) {
-					console.table(response.data.jadwal.data);
-					setData(response.data.jadwal.data);
-				}
-			})
-			.catch(function(error) {
-				console.error(error);
-			});
-		return () => {
-			mounted = false;
+		const updateLocalCovidData = (data, update) => {
+			localStorage.setItem('PrayerData', JSON.stringify(data));
+			localStorage.setItem('PrayerUpdate', update);
 		};
-	}, []);
+
+		if (today() !== prayerUpdate) {
+			console.log('new Fetch');
+			axios
+				.request(options)
+				.then((res) => {
+					updateLocalCovidData(res.data.jadwal.data, today());
+					if (prayerData) {
+						setData(prayerData);
+						setIsLoading(false);
+					}
+				})
+				.catch((err) => {
+					alert('timeout');
+					localStorage.clear();
+					history.push('/');
+				});
+		} else {
+			console.log('old Fetch');
+			setData(prayerData);
+			setIsLoading(false);
+		}
+	}, [history]);
+
 
 	console.log(data);
 
@@ -94,7 +112,7 @@ function Prayer() {
 				<Grid container spacing={1}>
 					<Grid item xs>
 						<Grid container spacing={1}>
-							{Object.keys(data).map((key, index) => (
+							{!isLoading ? Object.keys(data).map((key, index) => (
 								<Fragment key={index}>
 									<Grid item xs>
 										<Paper>
@@ -109,7 +127,7 @@ function Prayer() {
 										</Paper>
 									</Grid>
 								</Fragment>
-							))}
+							)) : <p>Loading...</p>}
 						</Grid>
 					</Grid>
 				</Grid>

@@ -8,6 +8,16 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import { useHistory } from 'react-router-dom';
+
+function today() {
+	const dateObj = new Date();
+	let dd = String(dateObj.getDate()).padStart(2, '0');
+	var mm = String(dateObj.getMonth() + 1).padStart(2, '0'); //January is 0!
+	var yyyy = dateObj.getFullYear();
+	let str = yyyy + '-' + mm + '-' + dd;
+	return str;
+}
 
 const useStyles = makeStyles(() => ({
 	paper: {
@@ -23,6 +33,9 @@ function Covid() {
 	const classes = useStyles();
 
 	const [ data, setData ] = useState([]);
+	const [ isLoading, setIsLoading ] = useState(true);
+
+	const history = useHistory();
 
 	const dataKeys = {
 		recovered: {
@@ -52,7 +65,6 @@ function Covid() {
 	};
 
 	useEffect(() => {
-		let mounted = true;
 		const options = {
 			method: 'GET',
 			url: 'https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/total',
@@ -62,26 +74,39 @@ function Covid() {
 				'x-rapidapi-host': 'covid-19-coronavirus-statistics.p.rapidapi.com'
 			}
 		};
+		const covidData = JSON.parse(localStorage.getItem('CovidData'));
+		const covidUpdate = localStorage.getItem('CovidUpdate');
 
-		axios
-			.request(options)
-			.then(function(response) {
-				if (mounted) {
-					console.table(response.data.data);
-					setData(response.data.data);
-				}
-			})
-			.catch(function(error) {
-				console.error(error);
-			});
-
-		return () => {
-			mounted = false;
+		const updateLocalCovidData = (data, update) => {
+			localStorage.setItem('CovidData', JSON.stringify(data));
+			localStorage.setItem('CovidUpdate', update);
 		};
-	}, []);
 
+		if (today() !== covidUpdate) {
+			console.log('new Fetch');
+			axios
+				.request(options)
+				.then((res) => {
+					updateLocalCovidData(res.data.data, today());
+					if (covidData) {
+						setData(covidData);
+						setIsLoading(false);
+					}
+				})
+				.catch((err) => {
+					alert('timeout');
+					localStorage.clear();
+					history.push('/');
+				});
+		} else {
+			console.log('old Fetch');
+			setData(covidData);
+			setIsLoading(false);
+		}
+	}, [history]);
+
+	console.log(`data final: `);
 	console.log(data);
-
 	return (
 		<Fragment>
 			<Container>
@@ -92,22 +117,24 @@ function Covid() {
 				<Grid container spacing={1}>
 					<Grid item xs>
 						<Grid container spacing={2}>
-							{Object.keys(data).map((key, index) => (
-								<Fragment key={index}>
-									<Grid item xs>
-										<Paper>
-											<CardActionArea>
-												<CardContent className={classes.paper}>
-													<div>
-														<h5>{dataKeys[key].title}: </h5>
-														<h1 style={{ color: dataKeys[key].color }}>{data[key]}</h1>
-													</div>
-												</CardContent>
-											</CardActionArea>
-										</Paper>
-									</Grid>
-								</Fragment>
-							))}
+							{
+								!isLoading ? Object.keys(data).map((key, index) => (
+									<Fragment key={index}>
+										<Grid item xs>
+											<Paper>
+												<CardActionArea>
+													<CardContent className={classes.paper}>
+														<div>
+															<h5>{dataKeys[key].title}: </h5>
+															<h1 style={{ color: dataKeys[key].color }}>{data[key]}</h1>
+														</div>
+													</CardContent>
+												</CardActionArea>
+											</Paper>
+										</Grid>
+									</Fragment>
+								)) :
+								<p>Loading...</p>}
 						</Grid>
 					</Grid>
 				</Grid>

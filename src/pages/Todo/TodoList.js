@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
 	}
 }));
 
-function Todo(props) {
+function TodoList(props) {
 	const { data } = props;
 	const history = useHistory();
 	const classes = useStyles();
@@ -29,7 +29,7 @@ function Todo(props) {
 	console.log(data);
 	const handleLogout = () => {
 		localStorage.removeItem('AuthToken');
-		history.push('/Todo');
+		history.push('/login');
 	};
 
 	if (!localStorage.AuthToken) return <Redirect to="/login" />;
@@ -42,7 +42,7 @@ function Todo(props) {
 				<br />
 				<Grid container spacing={2}>
 					{data.map((key, index) => (
-						<Fragment key={index}>
+						<Fragment key={key.id}>
 							<Grid item xs={6}>
 								<Paper>
 									<CardActionArea>
@@ -64,4 +64,4 @@ function Todo(props) {
 	);
 }
 
-export default Todo;
+export default React.memo(TodoList);
