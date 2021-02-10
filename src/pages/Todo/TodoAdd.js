@@ -1,31 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment} from 'react';
 
-function TodoAdd() {
-	const [ count, setCount ] = useState(0);
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import { Button, Container, Typography } from '@material-ui/core';
+// import { Redirect, useHistory } from 'react-router-dom';
 
-	useEffect(() => {});
-	document.title = `You clicked ${count} times`;
-	console.log(count);
+function TodoAdd(props) {
+	const {handleChange, handleSubmit, todo} = props;
+
+	
 
 	return (
-		<div>
-			<p>You clicked {count} times</p>
-			<button onClick={() => setCount((prev) => prev + 1)}>Click me</button>
-			<Counter initialCount={0} />
-		</div>
-	);
+		<Fragment>
+		<form onSubmit={handleSubmit} action="post" noValidate autoComplete="true">
+			<Container maxWidth="xs">
+				<Typography variant="h4">Add Todo</Typography>
+				<br />
+				<Paper style={{ padding: '1em' }}>
+					<Grid container spacing={2}>
+						<Grid item xs={12}>
+							<TextField
+								name="title"
+								value={todo.title}
+								label="Title"
+								fullWidth
+								onChange={handleChange}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								name="description"
+								value={todo.description}
+								label="Description"
+								fullWidth
+								onChange={handleChange}
+							/>
+						</Grid>
+						<Grid item xs={12} variant="primary">
+							<Button variant="contained" type="submit">
+								Submit
+							</Button>
+						</Grid>
+					</Grid>
+				</Paper>
+			</Container>
+		</form>
+	</Fragment>
+);
 }
 
 export default TodoAdd;
 
-function Counter({ initialCount }) {
-	const [ count, setCount ] = useState(initialCount);
-	return (
-		<div>
-			Count: {count}
-			<button onClick={() => setCount(initialCount)}>Reset</button>
-			<button onClick={() => setCount((prevCount) => prevCount - 1)}>-</button>
-			<button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
-		</div>
-	);
-}

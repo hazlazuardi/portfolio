@@ -43,6 +43,7 @@ function Login() {
 				console.log(res);
 				if (res.statusText === 'OK') {
 					localStorage.setItem('AuthToken', `${res.data.token}`);
+                    localStorage.setItem('AuthData', JSON.stringify(res.data))
 					console.log(`login: ${res.data.token}`);
 					history.push('/');
 				}

@@ -22,15 +22,17 @@ const useStyles = makeStyles(() => ({
 }));
 
 function TodoList(props) {
-	const { data } = props;
+	const { onlineTodos, offlineTodos, keysToClear } = props;
 	const history = useHistory();
 	const classes = useStyles();
 
-	console.log(data);
+	console.log(onlineTodos);
+	console.log(offlineTodos)
 	const handleLogout = () => {
-		localStorage.removeItem('AuthToken');
+		keysToClear.forEach(k=>localStorage.removeItem(k))
 		history.push('/login');
 	};
+
 
 	if (!localStorage.AuthToken) return <Redirect to="/login" />;
 	return (
@@ -40,16 +42,18 @@ function TodoList(props) {
 				<Typography variant="h3">Todo</Typography>
 				<br />
 				<br />
+				<Typography variant="h4">Online</Typography>
 				<Grid container spacing={2}>
-					{data.map((key, index) => (
+					{onlineTodos.filter((key) => key.online).map((key) => (
 						<Fragment key={key.id}>
 							<Grid item xs={6}>
 								<Paper>
 									<CardActionArea>
 										<CardContent className={classes.paper}>
 											<div>
-												<h5>{key.title}: </h5>
+												<h3>{key.title}: </h3>
 												<h1>{key.description}</h1>
+												<h5>{key.owner}</h5>
 											</div>
 										</CardContent>
 									</CardActionArea>
@@ -58,7 +62,36 @@ function TodoList(props) {
 						</Fragment>
 					))}
 				</Grid>
-				<Button onClick={handleLogout}>Logout</Button>
+			</Container>
+			<br />
+			<Container>
+				<Typography variant="h4">Offline</Typography>
+				<Grid container spacing={2}>
+				{JSON.parse(localStorage.getItem('LocalTodos')).filter((key) => key.owner !== localStorage.getItem('CurrentUser')).map((key, index) => (
+						<Fragment key={key.id || index}>
+							<Grid item xs={6}>
+								<Paper>
+									<CardActionArea>
+										<CardContent className={classes.paper}>
+										<div>
+												<h3>{key.title}: </h3>
+												<h1>{key.description}</h1>
+												<h5>{key.owner}</h5>
+											</div>
+										</CardContent>
+									</CardActionArea>
+								</Paper>
+							</Grid>
+						</Fragment>
+					))}
+
+				</Grid>
+			</Container>
+			<br />
+			<Container>
+				<Button variant="contained" onClick={handleLogout}>
+					Logout
+				</Button>
 			</Container>
 		</Fragment>
 	);

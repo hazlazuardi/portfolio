@@ -88,8 +88,8 @@ function Covid() {
 				.request(options)
 				.then((res) => {
 					updateLocalCovidData(res.data.data, today());
-					if (covidData) {
-						setData(covidData);
+					if (JSON.parse(localStorage.getItem('CovidData'))) {
+						setData(JSON.parse(localStorage.getItem('CovidData')));
 						setIsLoading(false);
 					}
 				})

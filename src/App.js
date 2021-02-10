@@ -19,9 +19,11 @@ const useStyles = makeStyles((theme) => ({
 		top: '0em',
 		[theme.breakpoints.up('sm')]: {
 			position: 'absolute',
-			top: '4em'
+			top: '4em',
+			paddingBottom: 0
 		},
-		width: '100%'
+		width: '100%',
+		paddingBottom: '8em'
 	}
 }));
 

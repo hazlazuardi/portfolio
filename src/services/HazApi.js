@@ -8,6 +8,30 @@ const headerJWT = (token) => {
 	};
 };
 
+const axios = require('axios');
+
+export const fetchTodos = async (token) => {
+	const url = 'http://localhost:8100/api/todos/';
+
+	return await axios
+		.get(url, {
+			headers: {
+				'Authorization': `JWT ${token}`
+			}
+		})
+		.then((res) => {
+			const result = res.data;
+			if (result && result.length !== 0) {
+				return result.slice(0, 10);
+			}
+			return [];
+		})
+		.catch((error) => {
+			console.error(error);
+			return [];
+		});
+};
+
 const getAllTodos = (token) => {
 	return http.get('/todos/', headerJWT(token));
 };

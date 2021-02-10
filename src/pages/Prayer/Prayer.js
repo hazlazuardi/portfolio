@@ -82,8 +82,8 @@ function Prayer() {
 				.request(options)
 				.then((res) => {
 					updateLocalCovidData(res.data.jadwal.data, today());
-					if (prayerData) {
-						setData(prayerData);
+					if (JSON.parse(localStorage.getItem('PrayerData'))) {
+						setData(JSON.parse(localStorage.getItem('PrayerData')));
 						setIsLoading(false);
 					}
 				})
