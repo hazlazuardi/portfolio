@@ -78,7 +78,7 @@ function Prayer() {
 
 		if (today() !== prayerUpdate) {
 			console.log('new Fetch');
-			axios
+			return axios
 				.request(options)
 				.then((res) => {
 					updateLocalCovidData(res.data.jadwal.data, today());
@@ -89,7 +89,6 @@ function Prayer() {
 				})
 				.catch((err) => {
 					alert('timeout');
-					localStorage.clear();
 					history.push('/');
 				});
 		} else {

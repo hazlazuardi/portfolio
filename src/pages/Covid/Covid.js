@@ -95,7 +95,6 @@ function Covid() {
 				})
 				.catch((err) => {
 					alert('timeout');
-					localStorage.clear();
 					history.push('/');
 				});
 		} else {

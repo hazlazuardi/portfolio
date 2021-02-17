@@ -10,7 +10,7 @@ const headerJWT = (token) => {
 
 const axios = require('axios');
 
-export const fetchTodos = async (token) => {
+export const fetchTodos = async  (token) => {
 	const url = 'http://localhost:8100/api/todos/';
 
 	return await axios
@@ -19,17 +19,17 @@ export const fetchTodos = async (token) => {
 				'Authorization': `JWT ${token}`
 			}
 		})
-		.then((res) => {
-			const result = res.data;
-			if (result && result.length !== 0) {
-				return result.slice(0, 10);
+};
+
+export const uploadTodo = async  (data, token) => {
+	const url = 'http://localhost:8100/api/todos/';
+
+	return await axios
+		.post(url, data, {
+			headers: {
+				'Authorization': `JWT ${token}`
 			}
-			return [];
 		})
-		.catch((error) => {
-			console.error(error);
-			return [];
-		});
 };
 
 const getAllTodos = (token) => {

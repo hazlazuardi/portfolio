@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import { useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
 	paper: {
@@ -22,25 +22,30 @@ const useStyles = makeStyles(() => ({
 }));
 
 function TodoList(props) {
-	const { pendingTodos, updatedTodos } = props;
+	const {onlineTodos, offlineTodos, keysToClear} = props;
 	const history = useHistory();
 
 	const classes = useStyles();
 
-	// console.log(onlineTodos);
-	console.table(pendingTodos);
+	console.log(onlineTodos);
+	console.log(offlineTodos)
 	const handleLogout = () => {
-		localStorage.removeItem('AuthToken');
+		keysToClear.forEach(k=>localStorage.removeItem(k))
 		history.push('/login');
 	};
+
 
 	// if (JSON.parse(localStorage.getItem('AuthToken')) === undefined) return <Redirect to="/login" />;
 	return (
 		<Fragment>
-			<Typography variant="h4">Online</Typography>
-			<Grid container spacing={2}>
-				{
-					updatedTodos.length !== 0 ? updatedTodos.map((key) => (
+			<Container>
+				<br />
+				<Typography variant="h3">Todo</Typography>
+				<br />
+				<br />
+				<Typography variant="h4">Online</Typography>
+				<Grid container spacing={2}>
+					{onlineTodos.filter((key) => key.online).map((key) => (
 						<Fragment key={key.id}>
 							<Grid item xs={6}>
 								<Paper>
@@ -48,9 +53,7 @@ function TodoList(props) {
 										<CardContent className={classes.paper}>
 											<div>
 												<h3>{key.title}: </h3>
-												<h1>
-													{key.id}: {key.description}
-												</h1>
+												<h1>{key.description}</h1>
 												<h5>{key.owner}</h5>
 											</div>
 										</CardContent>
@@ -58,25 +61,22 @@ function TodoList(props) {
 								</Paper>
 							</Grid>
 						</Fragment>
-					)) :
-					<h1>You're not connected to the internet</h1>}
-			</Grid>
+					))}
+				</Grid>
+			</Container>
 			<br />
-			<Typography variant="h4">Offline</Typography>
-			<br />
-			<Grid container spacing={2}>
-				{
-					pendingTodos.length !== 0 ? pendingTodos.map((key, index) => (
-						<Fragment key={index}>
+			{/* <Container>
+				<Typography variant="h4">Offline</Typography>
+				<Grid container spacing={2}>
+				{JSON.parse(localStorage.getItem('LocalTodos')).filter((key) => key.owner !== localStorage.getItem('CurrentUser')).map((key, index) => (
+						<Fragment key={key.id || index}>
 							<Grid item xs={6}>
 								<Paper>
 									<CardActionArea>
 										<CardContent className={classes.paper}>
-											<div>
+										<div>
 												<h3>{key.title}: </h3>
-												<h1>
-													{key.id}: {key.description}
-												</h1>
+												<h1>{key.description}</h1>
 												<h5>{key.owner}</h5>
 											</div>
 										</CardContent>
@@ -84,13 +84,16 @@ function TodoList(props) {
 								</Paper>
 							</Grid>
 						</Fragment>
-					)) :
-					<Typography>Nothing to see here..</Typography>}{' '}
-			</Grid>
+					))}
+
+				</Grid>
+			</Container> */}
 			<br />
-			<Button variant="contained" onClick={handleLogout}>
-				Logout
-			</Button>
+			<Container>
+				<Button variant="contained" onClick={handleLogout}>
+					Logout
+				</Button>
+			</Container>
 		</Fragment>
 	);
 }
