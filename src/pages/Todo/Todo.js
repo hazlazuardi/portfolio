@@ -3,7 +3,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { fetchTodos, uploadTodo } from '../../services/HazApi';
 import TodoList from './TodoList';
 import TodoAdd from './TodoAdd';
-import { LocalGroceryStoreOutlined } from '@material-ui/icons';
 
 // localStorageKey
 const updatedLS = 'UpdatedTodos';

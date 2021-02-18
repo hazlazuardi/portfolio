@@ -4,7 +4,7 @@ import React, { Fragment, Suspense } from 'react';
 import { CssBaseline, ThemeProvider, withWidth } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { HazTheme } from './theme';
-import { urls } from './urls';
+import { urls, hiddenUrls } from './urls';
 
 import Drawer from './components/Drawer';
 import TabBar from './components/TabBar';
@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 const theme = HazTheme;
 
 const pages = urls;
+const hiddenPages = hiddenUrls;
 
 const FallBackSuspense = () => {
 	return <h1>Loading..</h1>;
@@ -61,7 +62,13 @@ function App(props) {
 							<Drawer />
 						</Hidden> */}
 						<div className={classes.content}>
+							{/* Ini pages parent */}
 							{pages.map(({ path, component }, key) => (
+								<Route exact path={path} component={component} key={key} />
+							))}
+
+							{/* Ini untuk pages yang gaada di drawer */}
+							{hiddenPages.map(({ path, component }, key) => (
 								<Route exact path={path} component={component} key={key} />
 							))}
 						</div>

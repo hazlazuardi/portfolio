@@ -4,12 +4,15 @@ import HomeIcon from '@material-ui/icons/Home';
 import GrainIcon from '@material-ui/icons/Grain';
 import TimeLapseIcon from '@material-ui/icons/Timelapse';
 import DateRange from '@material-ui/icons/DateRange';
+import PersonIcon from '@material-ui/icons/Person';
 
 const Landing = lazy(() => import('./pages/Landing/Landing'));
 const Covid = lazy(() => import('./pages/Covid/Covid'));
 const Prayer = lazy(() => import('./pages/Prayer/Prayer'));
 const Todo = lazy(() => import('./pages/Todo/Todo'));
 const Login = lazy(() => import('./pages/Auth/Login'));
+const Signup = lazy(() => import('./pages/Auth/Signup'));
+const Profile = lazy(() => import('./pages/Auth/Profile'));
 
 export const urls = [
 	{
@@ -42,9 +45,26 @@ export const urls = [
 	},
 	{
 		id: 4,
+		label: 'Profile',
+		path: '/profile',
+		component: Profile,
+		icon: <PersonIcon />
+	}
+];
+
+export const hiddenUrls = [
+	{
+		id: 1,
 		label: 'Login',
 		path: '/login',
 		component: Login,
-		icon: <DateRange />
+		icon: null
+	},
+	{
+		id: 2,
+		label: 'Signup',
+		path: '/signup',
+		component: Signup,
+		icon: null
 	}
 ];
