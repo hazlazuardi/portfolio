@@ -11,6 +11,18 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#1a73e8",
+      },
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+        mono: ["IBM Plex Mono", "monospace"],
+      },
+      fontSize: {
+        heading: ["32px", "auto"],
+        title: ["16px", "150%"],
+        body: ["16px", "150%"],
+        caption: ["12px", "150%"],
+        code: ["14px", "150%"],
       },
     },
   },
