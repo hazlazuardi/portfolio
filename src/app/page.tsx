@@ -1,6 +1,5 @@
-import React from 'react'
 
-type Props = {}
+// type Props = {}
 
 export default function HomePage() {
   return null; // No content since it's redirected

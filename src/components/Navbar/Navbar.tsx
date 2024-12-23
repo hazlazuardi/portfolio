@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react'
 
-type Props = {}
+// type Props = {}
 
-export default function Navbar({}: Props) {
-  return (
-    <div>Navbar</div>
-  )
-}
+// export default function Navbar({}: Props) {
+//   return (
+//     <div>Navbar</div>
+//   )
+// }
