@@ -12,6 +12,22 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "#1a73e8",
+        kopken: {
+          primary: {
+            DEFAULT: "#9747FF",
+            '50': '#f7f2ff',
+            '100': '#efe8ff',
+            '200': '#e1d4ff',
+            '300': '#ccb1ff',
+            '400': '#b485ff',
+            '500': '#9747ff',
+            '600': '#9330f7',
+            '700': '#851ee3',
+            '800': '#6f18bf',
+            '900': '#5b169c',
+            '950': '#390b6a',
+          }
+        }
       },
       fontFamily: {
         kopken: ["var(--font-poppins)"],

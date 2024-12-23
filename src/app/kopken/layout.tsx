@@ -1,16 +1,16 @@
+import { Metadata } from "next";
 import "../globals.css";
+
+export const metadata: Metadata = {
+    title: "KopKen",
+    description: "KopKen is an iOS app utilising context-awareness to foster nostalgia.",
+};
 
 
 export default function KopKenLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className='font-kopken'>
-      <header>
-        <h1 className="text-heading">KopKen</h1>
-      </header>
-      <main>{children}</main>
-      <footer>
-        <p className="text-caption">© KopKen 2024</p>
-      </footer>
-    </div>
-  );
+    return (
+        <div className='font-kopken flex justify-center'>
+            {children}
+        </div>
+    );
 }
