@@ -9,7 +9,7 @@ type Props = {
 
 export default function A({ variant, href, isNewTab, label }: Props) {
     const styles = {
-        "button": "inline-flex items-center px-4 py-2 bg-kopken-primary hover:bg-kopken-primary-400 rounded-3xl",
+        "button": "inline-flex items-center px-4 py-2 bg-kopken-primary hover:bg-kopken-primary-400 text-white rounded-3xl",
         "text": ""
     }
 
