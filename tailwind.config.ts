@@ -14,8 +14,7 @@ export default {
         primary: "#1a73e8",
       },
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
-        mono: ["IBM Plex Mono", "monospace"],
+        kopken: ["var(--font-poppins)"],
       },
       fontSize: {
         heading: ["32px", "auto"],
