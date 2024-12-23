@@ -21,7 +21,7 @@ const SectionWrapper = ({
     className?: string;
 }) => (
     <section
-        className={`max-w-lg w-full mx-auto flex flex-col gap-6 px-8 py-6 ${className}`}
+        className={`${className} max-w-lg w-full mx-auto flex flex-col gap-6 px-8 py-6`}
     >
         {children}
     </section>
@@ -45,15 +45,25 @@ const ListItem = ({
     title,
     description,
 }: {
-    icon: string;
+    icon: "journal" | "camera" | "phone" | "grade";
     title: string;
     description: string;
-}) => (
-    <li className={`list-['${icon}'] pl-3`}>
-        <span className="font-semibold text-kopken-primary-500">{title}</span>
-        {description}
-    </li>
-);
+}) => {
+
+    const icons = {
+        journal: 'list-["📑"] pl-3',
+        camera: 'list-["📸"] pl-3',
+        phone: 'list-["📱"] pl-3',
+        grade: 'list-["💯"] pl-3'
+    }
+
+    return (
+        <li className={icons[icon]}>
+            <span className="font-semibold text-kopken-primary-500">{title}</span>
+            {description}
+        </li>
+    )
+}
 
 const Callout = ({
     children
@@ -69,8 +79,15 @@ export default function KopKenPage() {
     return (
         <div className="flex flex-col gap-6">
             {/* Hero Section */}
-            <SectionWrapper className="h-screen justify-end py-12">
-                <p className="font-bold tracking-wider text-slate-600">UX Case Study</p>
+            <SectionWrapper className="h-screen justify-end !gap-0 pb-16">
+                <Image
+                    src={'/logo.png'}
+                    width={100}
+                    height={100}
+                    alt="KopKen Logo"
+                    quality={100}
+                />
+                <p className="font-semibold text-slate-400 dark:text-slate-500 mt-4">UX Case Study</p>
                 <h1 className="text-heading font-semibold">
                     <span className="font-bold text-kopken-primary-500">KopKen </span>
                     － Designing Context-Aware Nostalgia Experiences
@@ -140,22 +157,22 @@ export default function KopKenPage() {
                     <p className="font-semibold mb-4">Key Highlights:</p>
                     <ul className="flex flex-col gap-3 list-outside pl-6">
                         <ListItem
-                            icon="📑"
+                            icon="journal"
                             title="Extracted 17+ insights"
                             description=" by reviewing 10 journal articles and conducted competitor research."
                         />
                         <ListItem
-                            icon="📸"
+                            icon="camera"
                             title="Generated 11 actionable design opportunities"
                             description=" by synthesising 18+ cultural probe artefacts."
                         />
                         <ListItem
-                            icon="📱"
+                            icon="phone"
                             title="Developed 2 functional prototypes"
                             description=" in React Native by utilising multi-peer connectivity and geolocation for 4 key use cases."
                         />
                         <ListItem
-                            icon="💯"
+                            icon="grade"
                             title="Achieved a High-Distinction grade"
                             description=" while leading a cross-functional team of four."
                         />
