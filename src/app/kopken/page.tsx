@@ -17,7 +17,7 @@ export default function KopKenPage() {
     return (
         <div className="flex flex-col gap-6">
             {/* Hero Section */}
-            <section className="max-w-lg mx-auto h-screen flex flex-col justify-end py-12 px-8">
+            <section className="max-w-lg w-full mx-auto h-screen flex flex-col justify-end py-12 px-8">
                 <p className="font-bold tracking-wider text-slate-600">UX Case Study</p>
                 <h1 className="text-heading font-semibold">
                     <span className="font-bold text-kopken-primary-500">KopKen </span>
@@ -26,7 +26,7 @@ export default function KopKenPage() {
             </section>
 
             {/* Info Section */}
-            <section className="max-w-lg mx-auto flex flex-col gap-3 px-8">
+            <section className="max-w-lg w-full mx-auto flex flex-col gap-3 px-8 pb-10">
                 <div>
                     <p className="font-bold tracking-wider">Role</p>
                     <p>Team Leader</p>
@@ -48,8 +48,8 @@ export default function KopKenPage() {
             </section>
 
             {/* UI Section */}
-            <section className=" bg-slate-100 w-screen items-center flex flex-col pt-5 pb-10">
-                <div className="max-w-2xl flex flex-col items-center gap-4">
+            <section className=" bg-kopken-primary-100 w-screen items-center flex flex-col pt-5 pb-10">
+                <div className="max-w-3xl flex flex-col items-center gap-4">
                     <div className="flex flex-wrap gap-y-10 gap-x-1 justify-around py-4">
                         {images.map((src, i) => (
                             <div key={i} className="relative w-1/4 mx-auto">
@@ -69,16 +69,16 @@ export default function KopKenPage() {
                         }
                         variant="button"
                         isNewTab
-                        label="Open in Figma"
+                        label="Try Demo"
                     />
                 </div>
             </section>
 
             {/* Overview */}
-            <section className="max-w-lg mx-auto flex flex-col gap-6 px-8">
+            <section className="max-w-lg w-full mx-auto flex flex-col gap-6 px-8 py-5">
                 <div>
                     <p className="font-semibold text-slate-600">Overview</p>
-                    <p className="text-heading font-bold">What is KopKen?</p>
+                    <p className="text-heading font-bold">What Is KopKen?</p>
                 </div>
                 <p>
                     KopKen is an iOS app that works like a smart memory box,
@@ -118,6 +118,66 @@ export default function KopKenPage() {
                     </div>
                 </div>
             </section>
+
+
+            {/* Where it all begin */}
+            <section className="max-w-lg w-full mx-auto flex flex-col gap-6 px-8 py-5">
+                <div>
+                    <p className="font-semibold text-slate-600">Where It All Begin</p>
+                    <p className="text-heading font-bold">
+                        Have You Ever Revisited a Place and Felt a Rush of Nostalgia?
+                    </p>
+                </div>
+                <p>
+                    The bench where you laughed with friends, the café where you worked on late-night assignments—these places hold your memories.
+                </p>
+                <p>
+                    But how often do we revisit them meaningfully?
+                </p>
+                <p>
+                    Inspired by these experiences, I explored this domain for my Social and Mobile Computing (DECO3500) course at the University of Queensland.
+                </p>
+            </section>
+
+
+            {/* Domain Exploration */}
+            <section className=" flex flex-col gap-6 py-6">
+                <div className="max-w-lg w-full mx-auto px-8">
+                    <p className="font-semibold text-slate-600">Domain Exploration</p>
+                    <p className="text-heading font-bold">
+                        Exploring Nostalgia Through Technology
+                    </p>
+                </div>
+                <p className="max-w-lg w-full mx-auto px-8">
+                    I came across research showing that up to
+                </p>
+                <div className="w-auto mx-auto bg-kopken-primary-100 rounded-2xl">
+                    <div className="max-w-lg flex gap-4 px-8 items-center">
+                        <p className="text-[4rem] text-kopken-primary-500">75%</p>
+                        <p><span className="font-semibold">of conversations </span>revolve around nostalgia.*</p>
+                    </div>
+                </div>
+                <p className="max-w-lg w-full mx-auto px-8">
+                    Technology, like Apple Photos’ On This Day widget, make nostalgic memories accessible than ever.
+                </p>
+                <p className="max-w-lg w-full mx-auto px-8">
+                    However, they often lack context, surfacing memories at unrelated or inappropriate times. This limits their emotional impact and the opportunity to spark meaningful conversations.
+                </p>
+                <p className="max-w-lg w-full mx-auto px-8">
+                    This led me to a key question:
+                </p>
+
+                <div className="w-auto mx-auto bg-kopken-primary-100 py-4 rounded-2xl">
+                    <p className="italic max-w-lg px-8">
+                        <span className="font-semibold text-kopken-primary-500">How might we </span>
+                        develop context-aware technology that uses reminiscing and nostalgia to stimulate shared conversations among friends or family?
+                    </p>
+                </div>
+
+                <p className="text-caption max-w-lg w-full mx-auto px-6">*(Baron & Bluck, 2009)</p>
+
+            </section>
+
         </ div>
     );
 }
