@@ -1,5 +1,6 @@
 import Image from "next/image";
 import A from "./components/A";
+import thatBench from '../../../public/kopken/images/that-bench.jpg'
 
 const images = [
     "ghost-mode.png",
@@ -151,6 +152,15 @@ export default function KopKenPage() {
                     relive and share memories based on your location and the people
                     nearby.
                 </p>
+                <p>
+                    It surfaces photos tied to your surroundings and companions, sparking
+                    nostalgic conversations about shared moments.
+                </p>
+                <p>
+                    Everything is stored
+                    offline, ensuring privacy while making reminiscing natural, contextual,
+                    and personal.
+                </p>
 
                 {/* Highlights */}
                 <div>
@@ -179,6 +189,21 @@ export default function KopKenPage() {
                     </ul>
                 </div>
             </SectionWrapper>
+
+
+            {/* That Bench */}
+            {/* <section className="w-screen">
+                <Image
+                    src={'/kopken/images/that-bench.jpg'}
+                    // width={100}
+                    // height={100}
+                    alt="nostalgic bench"
+                    quality={100}
+                    objectFit='contain'
+                    objectPosition='center'
+                // fill
+                />
+            </section> */}
 
 
 
@@ -211,11 +236,12 @@ export default function KopKenPage() {
                         I came across research showing that up to
                     </p>
                     <Callout>
-                        <div className="max-w-lg flex gap-4 px-8 items-center">
-                            <p className="text-[4rem] text-kopken-primary-500 leading-[1] ">75%</p>
+                        <div className="max-w-lg flex gap-6 px-8 items-center">
+                            <p className="text-[2.4rem] min-[380px]:text-[3rem] min-[450px]:text-[4rem] text-kopken-primary-500 dark:text-kopken-primary-400 leading-[1] ">75%</p>
                             <p><span className="font-semibold">of conversations </span>revolve around nostalgia.*</p>
                         </div>
                     </Callout>
+
                 </div>
                 <p className="w-full mx-auto">
                     Technology, like Apple Photos’ On This Day widget, make nostalgic memories accessible than ever.
@@ -230,7 +256,7 @@ export default function KopKenPage() {
 
                     <Callout>
                         <p className="italic max-w-lg px-8">
-                            <span className="font-semibold text-kopken-primary-500">How might we </span>
+                            <span className="font-semibold text-kopken-primary-500 dark:text-kopken-primary-400">How might we </span>
                             develop context-aware technology that uses reminiscing and nostalgia to stimulate shared conversations among friends or family?
                         </p>
                     </Callout>
@@ -239,6 +265,52 @@ export default function KopKenPage() {
                 <p className="text-caption w-full mx-auto">*(Baron & Bluck, 2009)</p>
 
             </SectionWrapper>
+
+
+
+            {/* User Research */}
+            <SectionWrapper>
+                <HeadingBlock
+                    subtitle="User Research"
+                    title="Uncovering User Needs Through a Cultural Probe"
+                />
+                <p>
+                    I conducted a cultural probe with
+                    <span className="text-kopken-primary-500 font-semibold"> 3 participants</span> (an international student,
+                    a career mother, and a memory preserver) over
+                    <span className="text-kopken-primary-500 font-semibold"> a one-week period.</span>
+                </p>
+                <div className="flex flex-col gap-3">
+                    <p className="-mb-1">
+                        The probe consisted of two parts:
+                    </p>
+                    <Callout>
+                        <div className="max-w-lg flex flex-col gap-1 px-8">
+                            <p className="text-kopken-primary-500 dark:text-kopken-primary-400 font-semibold" >Shared iCloud Album</p>
+                            <p>I asked participants to upload photos/videos represented moments of nostalgia during their day.</p>
+                        </div>
+                    </Callout>
+                    <Callout>
+                        <div className="max-w-lg flex flex-col gap-1 px-8">
+                            <p className="text-kopken-primary-500 dark:text-kopken-primary-400 font-semibold" >
+                                Shared iCloud Notes
+                            </p>
+                            <p>
+                                I prepared prompts to reflect on their routines, triggers, and how they share nostalgic memories.
+                            </p>
+                        </div>
+                    </Callout>
+                </div>
+                <p>
+                    Although the sample size was small and participants needed reminders, the probe yielded
+                    <span className="font-semibold text-kopken-primary-500"> rich qualitative insights </span>
+                    into how people reflect on and share memories.
+                </p>
+            </SectionWrapper>
+
+
+            {/* User Research Images */}
+
 
         </ div >
     );
