@@ -1,6 +1,5 @@
 import Image from "next/image";
 import A from "./components/A";
-import thatBench from '../../../public/kopken/images/that-bench.jpg'
 
 const images = [
     "ghost-mode.png",
