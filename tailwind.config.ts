@@ -1,3 +1,4 @@
+import { Montserrat, Playpen_Sans } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -31,6 +32,9 @@ export default {
       },
       fontFamily: {
         kopken: ["var(--font-poppins)"],
+        playpen: ["var(--font-playpen)"],
+        philosopher: ["var(--font-philosopher)"],
+        montserrat: ["var(--font-montserrat)"]        
       },
       fontSize: {
         heading: ["32px", "auto"],

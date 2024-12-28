@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Montserrat_Alternates, Philosopher, Playpen_Sans, Poppins } from "next/font/google";
 
 import "./globals.css";
 
@@ -10,11 +10,31 @@ export const metadata: Metadata = {
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["100", "200", "300","400", "500", "600", "700", "800", "900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   display: 'swap',
   variable: "--font-poppins",
 });
 
+const playpen = Playpen_Sans({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  display: 'swap',
+  variable: "--font-playpen",
+})
+
+const philosopher = Philosopher({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: 'swap',
+  variable: "--font-philosopher",
+})
+
+const montserrat = Montserrat_Alternates({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: 'swap',
+  variable: "--font-philosopher",
+})
 
 export default function RootLayout({
   children,
@@ -22,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${playpen.variable} ${philosopher.variable} ${montserrat.variable}`}>
       <body>
         {children}
       </body>
