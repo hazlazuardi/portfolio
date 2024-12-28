@@ -91,21 +91,23 @@ const Callout = ({
 
 const FigmaEmbed = ({
     src,
-    caption
+    caption,
 }: {
     src: string;
     caption: string;
 }) => (
-    <figure className="mx-auto w-full max-w-6xl min-h-[80vh]">
+    <figure className="mx-auto max-w-6xl w-full px-4 lg:px-8 my-6">
+        {/* Use aspect-ratio for height consistency */}
         <iframe
-            className="w-full h-full border border-gray-200 rounded-lg"
+            className="w-full aspect-[4/3] border border-gray-200 rounded-lg"
             src={src}
-            allowFullScreen />
-        <figcaption className="max-w-lg w-full mx-auto px-8 py-3 text-center">
+            allowFullScreen
+        ></iframe>
+        <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
             {caption}
         </figcaption>
     </figure>
-)
+);
 
 const Bold = ({
     children,
@@ -356,7 +358,7 @@ export default function KopKenPage() {
 
 
             {/* User Research Images */}
-            <section className="flex flex-col gap-16 pb-12">
+            <section className="pb-12 flex flex-col gap-12">
                 <FigmaEmbed
                     src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1323-6007&embed-host=share"
                     caption="Crafting a Cultural Probe: A Diary Study Approach"
@@ -458,7 +460,7 @@ export default function KopKenPage() {
                 />
                 <Callout className="max-w-lg w-full">
                     <p className="mb-2 font-playpen text-2xl">
-                    <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
+                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
                             The Reflective Wanderer
                         </Bold>
                     </p>
@@ -468,7 +470,7 @@ export default function KopKenPage() {
                 </Callout>
                 <Callout className="max-w-lg w-full">
                     <p className="mb-2 font-philosopher text-[1.56em]">
-                    <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
+                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
                             The Collaborative Storyteller
                         </Bold>
                     </p>
