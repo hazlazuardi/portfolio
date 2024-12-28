@@ -458,7 +458,7 @@ export default function KopKenPage() {
                 />
                 <Callout className="max-w-lg w-full">
                     <p className="mb-2 font-playpen text-2xl">
-                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 dark:text-kopken-primary-400 to-[#D5666C]">
+                    <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
                             The Reflective Wanderer
                         </Bold>
                     </p>
@@ -468,7 +468,7 @@ export default function KopKenPage() {
                 </Callout>
                 <Callout className="max-w-lg w-full">
                     <p className="mb-2 font-philosopher text-[1.56em]">
-                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 dark:text-kopken-primary-400 to-[#D5666C]">
+                    <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
                             The Collaborative Storyteller
                         </Bold>
                     </p>
@@ -478,7 +478,7 @@ export default function KopKenPage() {
                 </Callout>
                 <Callout className="max-w-lg w-full">
                     <p className="mb-2 font-montserrat text-[1.6rem]">
-                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 dark:from-kopken-primary-400 to-[#D5666C]">
+                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
                             The Milestone Keeper
                         </Bold>
                     </p>
