@@ -1,6 +1,7 @@
 import Image from "next/image";
 import A from "./components/A";
 import thatBench from '../../../public/kopken/images/that-bench.jpg'
+import TableOfContent from "./components/TableOfContents";
 
 const images = [
     "ghost-mode.png",
@@ -15,14 +16,16 @@ const images = [
 ];
 
 const SectionWrapper = ({
+    id,
     children,
     className = "",
 }: {
+    id?: string
     children: React.ReactNode;
     className?: string;
 }) => (
-    <section
-        className={`${className} max-w-lg w-full mx-auto flex flex-col gap-6 px-8 py-6`}
+    <section id={id}
+        className={`${className} max-w-xl w-full mx-auto flex flex-col gap-6 px-8 py-6`}
     >
         {children}
     </section>
@@ -121,10 +124,23 @@ const Bold = ({
     </b>
 )
 
+const titles = [
+    'UI',
+    'Overview',
+    'Where it All Begin',
+    'Domain Exploration',
+    'User Research',
+    "Key Insights",
+    "Target Audience",
+    ""
+]
 
 export default function KopKenPage() {
     return (
-        <main className="flex flex-col gap-6">
+        <main className="flex flex-col gap-6 scroll-smooth">
+
+            <TableOfContent titles={titles} />
+
             {/* Hero Section */}
             <SectionWrapper className="h-screen justify-end !gap-0 pb-16">
                 <Image
@@ -164,7 +180,7 @@ export default function KopKenPage() {
             </SectionWrapper>
 
             {/* UI Section */}
-            <section className=" bg-kopken-primary-100 dark:bg-kopken-primary-950 w-screen items-center flex flex-col pt-5 pb-10">
+            <section id="UI" className=" bg-kopken-primary-100 dark:bg-kopken-primary-950 w-screen items-center flex flex-col pt-5 pb-10">
                 <div className="max-w-3xl flex flex-col items-center gap-4">
                     <div className="flex flex-wrap gap-y-10 gap-x-1 justify-around py-4">
                         {images.map((src, i) => (
@@ -191,7 +207,7 @@ export default function KopKenPage() {
             </section>
 
             {/* Overview Section */}
-            <SectionWrapper>
+            <SectionWrapper id='Overview'>
                 <HeadingBlock title="What Is KopKen?" subtitle="Overview" />
                 <p>
                     KopKen is an iOS app that works like a smart memory box, helping you
@@ -258,7 +274,7 @@ export default function KopKenPage() {
 
 
             {/* Where it all begin */}
-            <SectionWrapper>
+            <SectionWrapper id="Where it All Begin">
                 <HeadingBlock
                     title="Have You Ever Revisited a Place and Felt a Rush of Nostalgia?"
                     subtitle="Where It All Begin"
@@ -276,7 +292,7 @@ export default function KopKenPage() {
 
 
             {/* Domain Exploration */}
-            <SectionWrapper>
+            <SectionWrapper id="Domain Exploration">
                 <HeadingBlock
                     subtitle="Domain Exploration"
                     title="Exploring Nostalgia Through Technology"
@@ -323,7 +339,7 @@ export default function KopKenPage() {
 
 
             {/* User Research */}
-            <SectionWrapper>
+            <SectionWrapper id="User Research">
                 <HeadingBlock
                     subtitle="User Research"
                     title="Uncovering User Needs Through a Cultural Probe"
@@ -372,7 +388,7 @@ export default function KopKenPage() {
 
 
             {/* Key Findings */}
-            <SectionWrapper>
+            <SectionWrapper id="Key Insights">
                 <HeadingBlock
                     subtitle="Key Insights"
                     title={"The Paradox of Nostalgia"}
@@ -453,7 +469,7 @@ export default function KopKenPage() {
 
 
             {/* Target Audiences */}
-            <SectionWrapper>
+            <SectionWrapper id="Target Audience">
                 <HeadingBlock
                     subtitle="Target Audience"
                     title="Who We're Designing For"
