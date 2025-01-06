@@ -2,6 +2,7 @@ import Image from "next/image";
 import A from "./components/A";
 import thatBench from '../../../public/kopken/images/that-bench.jpg'
 import TableOfContent from "./components/TableOfContents";
+import journalPapers from '../../../public/kopken/images/journal-papers.png'
 
 const images = [
     "ghost-mode.png",
@@ -34,11 +35,13 @@ const SectionWrapper = ({
 const HeadingBlock = ({
     title,
     subtitle,
+    className,
 }: {
     title: string;
     subtitle?: string;
+    className?: string;
 }) => (
-    <div>
+    <div className={`${className}`}>
         <p className="font-semibold text-slate-400 dark:text-slate-500">{subtitle}</p>
         <p className="text-heading font-bold">{title}</p>
     </div>
@@ -65,20 +68,31 @@ const ListItem = ({
     title,
     description,
 }: {
-    icon?: string
-    title: React.ReactNode;
-    description: React.ReactNode;
+    icon?: string;
+    title?: React.ReactNode;
+    description?: React.ReactNode;
 }) => {
+    const contentAlignment =
+        title && description ? 'items-start' : 'items-center';
+
     return (
-        <li className={`flex items-start ${icon ? "gap-4" : "list-disc pl-6"}`}>
+        <li
+            className={`${icon ? `flex gap-4 ${contentAlignment}` : 'list-disc pl-2 ml-6'}`}
+        >
             {icon && <span className="text-lg">{icon}</span>}
-            <div className="flex flex-col gap-1">
-                <p className="font-semibold text-kopken-primary-500 dark:text-kopken-primary-400">{title}</p>
-                <p>{description}</p>
-            </ div>
+            <div
+                className={`flex flex-col ${title && description ? 'gap-1' : ''}`}
+            >
+                {title && (
+                    <p className="font-semibold text-kopken-primary-500 dark:text-kopken-primary-400">
+                        {title}
+                    </p>
+                )}
+                {description && <p>{description}</p>}
+            </div>
         </li>
-    )
-}
+    );
+};
 
 const Callout = ({
     children,
@@ -124,6 +138,18 @@ const Bold = ({
     </b>
 )
 
+const Code = ({
+    children,
+    className = ""
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) => (
+    <code className={`${className} bg-gray-200 dark:bg-gray-700 px-1 rounded`}>
+        {children}
+    </code>
+)
+
 const titles = [
     'UI',
     'Overview',
@@ -132,7 +158,10 @@ const titles = [
     'User Research',
     "Key Insights",
     "Target Audience",
-    ""
+    "Design Implications and Opportunities",
+    "Prototype 1 Objectives",
+    "Prototype 1 Task Flows",
+    "Prototype 1 Development"
 ]
 
 export default function KopKenPage() {
@@ -158,7 +187,7 @@ export default function KopKenPage() {
             </SectionWrapper>
 
             {/* Info Section */}
-            <SectionWrapper className="pb-10">
+            <SectionWrapper>
                 <div>
                     <p className="font-bold tracking-wider">Role</p>
                     <p>Team Leader</p>
@@ -180,7 +209,7 @@ export default function KopKenPage() {
             </SectionWrapper>
 
             {/* UI Section */}
-            <section id="UI" className=" bg-kopken-primary-100 dark:bg-kopken-primary-950 w-screen items-center flex flex-col pt-5 pb-10">
+            <section id="UI" className=" bg-kopken-primary-100 dark:bg-kopken-primary-950 w-screen items-center flex flex-col pt-6 pb-10">
                 <div className="max-w-3xl flex flex-col items-center gap-4">
                     <div className="flex flex-wrap gap-y-10 gap-x-1 justify-around py-4">
                         {images.map((src, i) => (
@@ -374,7 +403,7 @@ export default function KopKenPage() {
 
 
             {/* User Research Images */}
-            <section className="pb-12 flex flex-col gap-12">
+            <section className="py-6 flex flex-col gap-12">
                 <FigmaEmbed
                     src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1323-6007&embed-host=share"
                     caption="Crafting a Cultural Probe: A Diary Study Approach"
@@ -509,6 +538,243 @@ export default function KopKenPage() {
 
             </SectionWrapper>
 
+
+            {/* Design Implications and Opportunities */}
+            <SectionWrapper id="Design Implications and Opportunities">
+                <HeadingBlock
+                    subtitle="Design Implications and Opportunities"
+                    title="Challenges in Designing for Nostalgia"
+                />
+                <p>
+                    Based on literature and probe findings, I synthesised
+                    <Bold> 17+ design implications </Bold>
+                    and used
+                    <Bold> Affinity Diagram </Bold>
+                    to shape key
+                    themes:
+                </p>
+                <div className="flex flex-wrap gap-4">
+                    {[
+                        'Context-Awareness',
+                        'Accumulation of Meaning',
+                        'Privacy and Content Control',
+                        'Memory and Mobility',
+                        'Form of Artefacts',
+                    ].map(theme => (
+                        <div key={theme} className="px-4 py-2 bg-kopken-primary-100 rounded-full w-auto">
+                            <p className="text-sm text-kopken-primary-600" >{theme}</p>
+                        </div>
+                    ))}
+                </div>
+                <List title={
+                    <p>From there, I focused on several <b className="font-semibold">design opportunities:</b></p>
+                }>
+                    <ListItem icon="O1"
+                        title='Link Memories to People, Places, or Events'
+                        description='e.g. birthday photos linked to dates and mutuals, shown on future birthdays.'
+                    />
+                    <ListItem icon="O2"
+                        title='Integrate Movement and Mobility to Preserve Memories'
+                        description='e.g. photos from a road trip resurface when driving along the same highway.'
+                    />
+                    <ListItem icon="O3"
+                        title='Use Artefacts as Conversation Starters'
+                        description='e.g. a nostalgic photo prompts laughter during a family gathering.'
+                    />
+                    <ListItem icon="O4"
+                        title='Recognise Contrasts in Memories Over Time'
+                        description='e.g. artefacts from previous birthdays appear in a timeline, showing changes over the years.'
+                    />
+                    <ListItem icon="O5"
+                        title='Provide Users Control Over Artefacts'
+                        description='e.g. exclude artefacts from being visible during specific social contexts.'
+                    />
+                </List>
+            </SectionWrapper>
+
+            {/* Journal Papers */}
+            <section className="flex flex-col py-6 gap-12">
+                <figure className="mx-auto max-w-screen-lg max-h-[70vh] overflow-hidden place-content-start">
+                    <Image
+                        src={journalPapers}
+                        alt="reviewed journal papers"
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto'
+                        }}
+                    />
+                    <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                        Reviewed Journal Papers.
+                    </figcaption>
+                </figure>
+                <FigmaEmbed
+                    src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1545-5990&embed-host=share"
+                    caption="Design Implications from Reviewed Journals."
+                />
+                <FigmaEmbed
+                    src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1093-5027&embed-host=share"
+                    caption="Grouping Insights from Literature into Themes."
+                />
+
+            </section>
+
+            {/* Prototype 1 Objectives */}
+            <SectionWrapper id="Prototype 1 Objectives">
+                <HeadingBlock
+                    subtitle="Prototype 1 Objectives"
+                    title="Focusing on Social Reminiscing and Privacy"
+                />
+                <List
+                    title={
+                        <p>Prototype 1 <b>explores:</b></p>
+                    }>
+                    <ListItem
+                        icon="🫂"
+                        title="Reminisce with a mutual in one location."
+                        description="e.g. when visiting a café with friends, see photos of previous hangouts at that location with the same mutuals."
+                    />
+                    <ListItem
+                        icon="👻"
+                        title="Hide the user's presence from others"
+                        description="e.g. turn on Ghost Mode during solo walks in the park, preventing others from seeing your presence and artefacts."
+                    />
+
+                </List>
+                <List
+                    title={
+                        <p><b className="font-semibold">Features developed:</b></p>
+                    }>
+                    <ListItem
+                        icon="🫂"
+                        title="Display artefacts based on location and social context."
+                        description="Photos tied to mutuals and shared places surface contextually."
+                    />
+                    <ListItem
+                        icon="👻"
+                        title="Ghost mode for privacy."
+                        description="Control visibility while exploring shared memories privately."
+                    />
+
+                </List>
+                <List
+                    title={
+                        <p><b className="font-semibold">Design opportunities addressed:</b></p>
+                    }>
+                    <ListItem
+                        icon="O1"
+                        title="Link memories to people, places, or events."
+                    />
+                    <ListItem
+                        icon="O2"
+                        title="Integrate movement and mobility to preserve memories."
+                    />
+                    <ListItem
+                        icon="O3"
+                        title="Use artefacts as conversation starters."
+                    />
+                </List>
+                <List
+                    title={
+                        <p><b className="font-semibold">Hypotheses tested:</b></p>
+                    }>
+                    <Callout>
+                        <ListItem
+                            icon="H1"
+                            title="Features act as conversation starters and foster positive social interactions."
+                        />
+                    </Callout>
+                    <Callout>
+                        <ListItem
+                            icon="H2"
+                            title="Ghost mode ensures privacy and safety for private reminiscing."
+                        />
+                    </Callout>
+                </List>
+            </SectionWrapper>
+
+            {/* Prototype 1 Task Flows */}
+            <section id="Prototype 1 Task Flows" className="py-6">
+                <HeadingBlock
+                    subtitle="Prototype 1 Task Flows"
+                    title="Navigating Key Features in Prototype 1"
+                    className="max-w-lg mx-auto"
+                />
+                <FigmaEmbed
+                    src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1644-5989&embed-host=share"
+                    caption="Three main task flows to test."
+                />
+            </section>
+
+
+            {/* Prototype 1 Development */}
+            <SectionWrapper id="Prototype 1 Development">
+                <HeadingBlock
+                    subtitle="Prototype 1 Development"
+                    title="From Concept to Code"
+                />
+                <List
+                    title={
+                        <p>
+                            Developed in <Bold>React Native, </Bold>
+                            I ensured the prototype meets these key
+                            <b className="font-semibold"> experience requirements:</b>
+                        </p>
+                    }>
+                    <ListItem
+                        icon="📍"
+                        title="Location Awareness"
+                        description="Detect user’s current location for contextually relevant artefacts."
+                    />
+                    <ListItem
+                        icon="🤝"
+                        title="Social Context Awareness"
+                        description="Identify mutuals nearby to spark shared reminiscing."
+                    />
+                    <ListItem
+                        icon="🔒"
+                        title="Privacy Controls"
+                        description="Allow users to hide visibility, enabling private reflection."
+                    />
+                    <ListItem
+                        icon="🖼️"
+                        title="Contextual Artefacts"
+                        description="Display artefacts filtered by location and mutuals, enhancing relevance."
+                    />
+                </List>
+                <List
+                    title={
+                        <p><b className="font-semibold">How it Works:</b></p>
+                    }>
+                    <ListItem
+                        icon="📍"
+                        title="Get user's coordinate using GPS"
+                        description={
+                            <>
+                                via <Code>react-native-community/geolocation</Code>.
+                            </>
+                        }
+                    />
+                    <ListItem
+                        icon="🛜"
+                        title="Detect mutuals nearby using WiFi and Bluetooth"
+                        description={
+                            <>
+                                via <Code>react-native-multipeer-connectivity</Code>.
+                            </>
+                        }
+                    />
+                    <ListItem
+                        icon="💾"
+                        title="Store artefacts with location coordinates, mutual IDs, and timestamps"
+                        description={
+                            <>
+                                using <Code>react-native-mmkv</Code>.
+                            </>
+                        }
+                    />
+                </List>
+            </SectionWrapper>
         </ main >
     );
 
