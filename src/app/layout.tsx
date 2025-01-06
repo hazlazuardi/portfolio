@@ -10,8 +10,9 @@ export const metadata: Metadata = {
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "700"],
   display: 'swap',
+  preload: true,
   variable: "--font-poppins",
 });
 
@@ -33,7 +34,7 @@ const montserrat = Montserrat_Alternates({
   subsets: ["latin"],
   weight: ["400", "700"],
   display: 'swap',
-  variable: "--font-philosopher",
+  variable: "--font-montserrat",
 })
 
 export default function RootLayout({

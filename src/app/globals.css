@@ -19,6 +19,11 @@ html{
 }
 
 body {
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif; /* Add fallback fonts */
   color: var(--foreground);
   background: var(--background);
+}
+
+h1 {
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif; /* Match h1 with Poppins fallback */
 }
