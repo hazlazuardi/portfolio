@@ -3,6 +3,11 @@ import A from "./components/A";
 import thatBench from '../../../public/kopken/images/that-bench.jpg'
 import TableOfContent from "./components/TableOfContents";
 import journalPapers from '../../../public/kopken/images/journal-papers.png'
+import taskFlows1 from '../../../public/kopken/images/task-flows-1.png'
+import taskFlows2 from '../../../public/kopken/images/task-flows-2.png'
+import taskFlows3 from '../../../public/kopken/images/task-flows-3.png'
+import designingProbe from '../../../public/kopken/images/designing-probe.png'
+import FigmaEmbed from "./components/FigmaEmbed";
 
 const images = [
     "ghost-mode.png",
@@ -42,7 +47,7 @@ const HeadingBlock = ({
     className?: string;
 }) => (
     <div className={`${className}`}>
-        <p className="font-semibold text-slate-400 dark:text-slate-500">{subtitle}</p>
+        <p className="font-semibold text-slate-500 dark:text-slate-400">{subtitle}</p>
         <p className="text-heading font-bold">{title}</p>
     </div>
 );
@@ -67,17 +72,19 @@ const ListItem = ({
     icon,
     title,
     description,
+    className
 }: {
     icon?: string;
     title?: React.ReactNode;
     description?: React.ReactNode;
+    className?: string
 }) => {
     const contentAlignment =
         title && description ? 'items-start' : 'items-center';
 
     return (
         <li
-            className={`${icon ? `flex gap-4 ${contentAlignment}` : 'list-disc pl-2 ml-6'}`}
+            className={`${className} ${icon ? `flex gap-4 ${contentAlignment}` : 'list-disc pl-2 ml-6'}`}
         >
             {icon && <span className="text-lg">{icon}</span>}
             <div
@@ -106,26 +113,6 @@ const Callout = ({
     </div>
 )
 
-const FigmaEmbed = ({
-    src,
-    caption,
-}: {
-    src: string;
-    caption: string;
-}) => (
-    <figure className="mx-auto max-w-6xl w-full px-4 lg:px-8 my-6">
-        {/* Use aspect-ratio for height consistency */}
-        <iframe
-            className="w-full aspect-[4/3] border border-gray-200 rounded-lg"
-            src={src}
-            allowFullScreen
-        ></iframe>
-        <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
-            {caption}
-        </figcaption>
-    </figure>
-);
-
 const Bold = ({
     children,
     className = ""
@@ -133,7 +120,7 @@ const Bold = ({
     children: React.ReactNode
     className?: string;
 }) => (
-    <b className={`${className} text-kopken-primary-500 font-semibold`}>
+    <b className={`${className} text-kopken-primary-500 dark:text-kopken-primary-400 font-semibold`}>
         {children}
     </b>
 )
@@ -177,9 +164,10 @@ export default function KopKenPage() {
                     width={100}
                     height={100}
                     alt="KopKen Logo"
+                    priority={true}
                     quality={100}
                 />
-                <p className="font-semibold text-slate-400 dark:text-slate-500 mt-4">UX Case Study</p>
+                <p className="font-semibold text-slate-500 dark:text-slate-400 mt-4">UX Case Study</p>
                 <h1 className="text-heading font-semibold">
                     <span className="font-bold text-kopken-primary-500">KopKen </span>
                     － Designing Context-Aware Nostalgia Experiences
@@ -375,28 +363,31 @@ export default function KopKenPage() {
                 />
                 <p>
                     I conducted a cultural probe with
-                    <span className="text-kopken-primary-500 font-semibold"> 3 participants</span> (an international student,
+                    <Bold> 3 participants</Bold> (an international student,
                     a career mother, and a memory preserver) over
-                    <span className="text-kopken-primary-500 font-semibold"> a one-week period.</span>
+                    <Bold> a one-week period.</Bold>
                 </p>
-                <p>The probe consisted of two parts:</p>
-                <Callout className="w-full">
+                <List
+                    title={
+                        <p>The probe consisted of two parts:</p>
+                    }
+                >
                     <ListItem
                         icon="🗂️"
                         title="Shared iCloud Album"
                         description="I asked participants to upload photos/videos represented moments of nostalgia during their day."
+                        className="w-auto mx-auto bg-kopken-primary-100 dark:bg-kopken-primary-950 text-black dark:text-slate-100 py-4 px-6 rounded-2xl"
                     />
-                </Callout>
-                <Callout>
                     <ListItem
                         icon="📝"
                         title="Shared iCloud Notes"
                         description="I prepared prompts to reflect on their routines, triggers, and how they share nostalgic memories."
+                        className="w-auto mx-auto bg-kopken-primary-100 dark:bg-kopken-primary-950 text-black dark:text-slate-100 py-4 px-6 rounded-2xl"
                     />
-                </Callout>
+                </List>
                 <p>
                     Although the sample size was small and participants needed reminders, the probe yielded
-                    <span className="font-semibold text-kopken-primary-500"> rich qualitative insights </span>
+                    <Bold> rich qualitative insights </Bold>
                     into how people reflect on and share memories.
                 </p>
             </SectionWrapper>
@@ -404,10 +395,24 @@ export default function KopKenPage() {
 
             {/* User Research Images */}
             <section className="py-6 flex flex-col gap-12">
-                <FigmaEmbed
+                <figure className="px-4 lg:px-8 mx-auto max-w-screen-lg overflow-hidden place-content-start">
+                    <Image
+                        src={designingProbe}
+                        alt="Crafting a cultural probe: a diary study approach"
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto'
+                        }}
+                    />
+                    <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                        Crafting a cultural probe: a diary study approach
+                    </figcaption>
+                </figure>
+                {/* <FigmaEmbed
                     src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1323-6007&embed-host=share"
                     caption="Crafting a Cultural Probe: A Diary Study Approach"
-                />
+                /> */}
                 <FigmaEmbed
                     src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1159-6966&embed-host=share"
                     caption="Mapping Cultural Probe Insights to Research Questions"
@@ -504,36 +509,30 @@ export default function KopKenPage() {
                     title="Who We're Designing For"
                 />
                 <Callout className="max-w-lg w-full">
-                    <p className="mb-2 font-playpen text-2xl">
-                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
-                            The Reflective Wanderer
-                        </Bold>
+                    <p className="mb-2 font-playpen text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
+                        The Reflective Wanderer
                     </p>
-                    <p>Prefers <Bold className="dark:text-kopken-primary-400">private reminiscing </Bold>triggered by locations or sensory cues.</p>
+                    <p>Prefers <Bold>private reminiscing </Bold>triggered by locations or sensory cues.</p>
                     <br />
-                    <p>Needs tools for <Bold className="dark:text-kopken-primary-400">self-reflection</Bold> and <Bold className="dark:text-kopken-primary-400">contextual memory prompts.</Bold></p>
+                    <p>Needs tools for <Bold>self-reflection</Bold> and <Bold>contextual memory prompts.</Bold></p>
                 </Callout>
                 <Callout className="max-w-lg w-full">
-                    <p className="mb-2 font-philosopher text-[1.56em]">
-                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
-                            The Collaborative Storyteller
-                        </Bold>
+                    <p className="mb-2 font-philosopher text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
+                        The Collaborative Storyteller
                     </p>
-                    <p>Thrives on <Bold className="dark:text-kopken-primary-400">shared nostalgia </Bold>during social gatherings or online interactions.</p>
+                    <p>Thrives on <Bold>shared nostalgia </Bold>during social gatherings or online interactions.</p>
                     <br />
-                    <p>Needs <Bold className="dark:text-kopken-primary-400">collaborative tools</Bold> for sharing and <Bold className="dark:text-kopken-primary-400">building timelines.</Bold></p>
+                    <p>Needs <Bold>collaborative tools</Bold> for sharing and <Bold>building timelines.</Bold></p>
                 </Callout>
                 <Callout className="max-w-lg w-full">
-                    <p className="mb-2 font-montserrat text-[1.6rem]">
-                        <Bold className="bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
-                            The Milestone Keeper
-                        </Bold>
+                    <p className="mb-2 font-montserrat text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
+                        The Milestone Keeper
                     </p>
-                    <p>Values preserving <Bold className="dark:text-kopken-primary-400">significant life events</Bold> like weddings or milestones.</p>
+                    <p>Values preserving <Bold>significant life events</Bold> like weddings or milestones.</p>
 
 
                     <br />
-                    <p>Needs tools to <Bold className="dark:text-kopken-primary-400">organise memories</Bold> and <Bold className="dark:text-kopken-primary-400">connect them over time.</Bold></p>
+                    <p>Needs tools to <Bold>organise memories</Bold> and <Bold>connect them over time.</Bold></p>
                 </Callout>
 
             </SectionWrapper>
@@ -561,8 +560,8 @@ export default function KopKenPage() {
                         'Memory and Mobility',
                         'Form of Artefacts',
                     ].map(theme => (
-                        <div key={theme} className="px-4 py-2 bg-kopken-primary-100 rounded-full w-auto">
-                            <p className="text-sm text-kopken-primary-600" >{theme}</p>
+                        <div key={theme} className="px-4 py-2 bg-kopken-primary-100 dark:bg-kopken-primary-950 rounded-full w-auto">
+                            <p className="text-sm text-kopken-primary-500 dark:text-kopken-primary-200" >{theme}</p>
                         </div>
                     ))}
                 </div>
@@ -592,9 +591,9 @@ export default function KopKenPage() {
                 </List>
             </SectionWrapper>
 
-            {/* Journal Papers */}
+            {/* Journal Papers, Design Implications, and Opportunities */}
             <section className="flex flex-col py-6 gap-12">
-                <figure className="mx-auto max-w-screen-lg max-h-[70vh] overflow-hidden place-content-start">
+                <figure className="px-8 mx-auto max-w-screen-lg max-h-[70vh] overflow-hidden place-content-start">
                     <Image
                         src={journalPapers}
                         alt="reviewed journal papers"
@@ -678,33 +677,76 @@ export default function KopKenPage() {
                     title={
                         <p><b className="font-semibold">Hypotheses tested:</b></p>
                     }>
-                    <Callout>
-                        <ListItem
-                            icon="H1"
-                            title="Features act as conversation starters and foster positive social interactions."
-                        />
-                    </Callout>
-                    <Callout>
-                        <ListItem
-                            icon="H2"
-                            title="Ghost mode ensures privacy and safety for private reminiscing."
-                        />
-                    </Callout>
+                    <ListItem
+                        icon="H1"
+                        title="Features act as conversation starters and foster positive social interactions."
+                        className="w-auto mx-auto bg-kopken-primary-100 dark:bg-kopken-primary-950 text-black dark:text-slate-100 py-4 px-6 rounded-2xl"
+                    />
+                    <ListItem
+                        icon="H2"
+                        title="Ghost mode ensures privacy and safety for private reminiscing."
+                        className="w-auto mx-auto bg-kopken-primary-100 dark:bg-kopken-primary-950 text-black dark:text-slate-100 py-4 px-6 rounded-2xl"
+                    />
                 </List>
             </SectionWrapper>
 
             {/* Prototype 1 Task Flows */}
-            <section id="Prototype 1 Task Flows" className="py-6">
+            <SectionWrapper id="Prototype 1 Task Flows">
                 <HeadingBlock
                     subtitle="Prototype 1 Task Flows"
                     title="Navigating Key Features in Prototype 1"
-                    className="max-w-lg mx-auto"
+                    className="max-w-lg"
                 />
-                <FigmaEmbed
+                {/* <FigmaEmbed
                     src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1644-5989&embed-host=share"
                     caption="Three main task flows to test."
-                />
-            </section>
+                /> */}
+                <figure className="mx-auto max-w-screen-lg max-h-[70vh] overflow-hidden place-content-start">
+                    <Image
+                        src={taskFlows1}
+                        alt="Task flow 1: reminisce with mutuals in one location."
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }}
+                        className="rounded-md"
+                    />
+                    <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                        Task flow 1: reminisce with mutuals in one location.
+                    </figcaption>
+                </figure>
+                <figure className="mx-auto max-w-screen-lg max-h-[70vh] overflow-hidden place-content-start">
+                    <Image
+                        src={taskFlows2}
+                        alt="Task flow 2: toggling Ghost mode on for private reminiscing."
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }}
+                        className="rounded-md"
+                    />
+                    <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                        Task flow 2: toggling Ghost mode on for private reminiscing.
+                    </figcaption>
+                </figure>
+                <figure className="mx-auto max-w-screen-lg max-h-[70vh] overflow-hidden place-content-start">
+                    <Image
+                        src={taskFlows3}
+                        alt="Task flow 3: creating an artefact with nearby mutuals."
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }}
+                        className="rounded-md"
+                    />
+                    <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                        Task flow 3: creating an artefact with nearby mutuals.
+                    </figcaption>
+                </figure>
+            </SectionWrapper>
 
 
             {/* Prototype 1 Development */}
