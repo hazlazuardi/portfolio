@@ -7,6 +7,8 @@ import taskFlows1 from '../../../public/kopken/images/task-flows-1.png'
 import taskFlows2 from '../../../public/kopken/images/task-flows-2.png'
 import taskFlows3 from '../../../public/kopken/images/task-flows-3.png'
 import designingProbe from '../../../public/kopken/images/designing-probe.png'
+import developingPrototype from '../../../public/kopken/images/developing-prototype.png'
+import workshopKopKen from '../../../public/kopken/images/workshop-kopken.png'
 import FigmaEmbed from "./components/FigmaEmbed";
 
 const images = [
@@ -148,7 +150,8 @@ const titles = [
     "Design Implications and Opportunities",
     "Prototype 1 Objectives",
     "Prototype 1 Task Flows",
-    "Prototype 1 Development"
+    "Prototype 1 Development",
+    "Prototype 1 Insights"
 ]
 
 export default function KopKenPage() {
@@ -517,7 +520,7 @@ export default function KopKenPage() {
                     <p>Needs tools for <Bold>self-reflection</Bold> and <Bold>contextual memory prompts.</Bold></p>
                 </Callout>
                 <Callout className="max-w-lg w-full">
-                    <p className="mb-2 font-philosopher text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
+                    <p className="mb-2 font-philosopher text-[1.8rem] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
                         The Collaborative Storyteller
                     </p>
                     <p>Thrives on <Bold>shared nostalgia </Bold>during social gatherings or online interactions.</p>
@@ -525,7 +528,7 @@ export default function KopKenPage() {
                     <p>Needs <Bold>collaborative tools</Bold> for sharing and <Bold>building timelines.</Bold></p>
                 </Callout>
                 <Callout className="max-w-lg w-full">
-                    <p className="mb-2 font-montserrat text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
+                    <p className="mb-2 font-montserrat text-[1.7rem] font-semibold bg-clip-text text-transparent bg-gradient-to-r from-kopken-primary-500 to-[#D5666C] dark:bg-gradient-to-r dark:from-kopken-primary-400 dark:to-[#D5666C]">
                         The Milestone Keeper
                     </p>
                     <p>Values preserving <Bold>significant life events</Bold> like weddings or milestones.</p>
@@ -749,74 +752,168 @@ export default function KopKenPage() {
             </SectionWrapper>
 
 
+            {/* Developing Prototype */}
+            <section>
+                <div className="max-h-[70vh] overflow-hidden place-content-end">
+                    <Image
+                        src={developingPrototype}
+                        alt="Developing prototype using React Native."
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto'
+                        }}
+                        quality={100}
+                    />
+                </div>
+            </section>
+
+
             {/* Prototype 1 Development */}
             <SectionWrapper id="Prototype 1 Development">
                 <HeadingBlock
                     subtitle="Prototype 1 Development"
                     title="From Concept to Code"
                 />
-                <List
-                    title={
-                        <p>
-                            Developed in <Bold>React Native, </Bold>
-                            I ensured the prototype meets these key
-                            <b className="font-semibold"> experience requirements:</b>
-                        </p>
-                    }>
-                    <ListItem
-                        icon="📍"
-                        title="Location Awareness"
-                        description="Detect user’s current location for contextually relevant artefacts."
-                    />
-                    <ListItem
-                        icon="🤝"
-                        title="Social Context Awareness"
-                        description="Identify mutuals nearby to spark shared reminiscing."
-                    />
-                    <ListItem
-                        icon="🔒"
-                        title="Privacy Controls"
-                        description="Allow users to hide visibility, enabling private reflection."
-                    />
-                    <ListItem
-                        icon="🖼️"
-                        title="Contextual Artefacts"
-                        description="Display artefacts filtered by location and mutuals, enhancing relevance."
-                    />
-                </List>
-                <List
-                    title={
-                        <p><b className="font-semibold">How it Works:</b></p>
-                    }>
-                    <ListItem
-                        icon="📍"
-                        title="Get user's coordinate using GPS"
-                        description={
-                            <>
-                                via <Code>react-native-community/geolocation</Code>.
-                            </>
-                        }
-                    />
-                    <ListItem
-                        icon="🛜"
-                        title="Detect mutuals nearby using WiFi and Bluetooth"
-                        description={
-                            <>
-                                via <Code>react-native-multipeer-connectivity</Code>.
-                            </>
-                        }
-                    />
-                    <ListItem
-                        icon="💾"
-                        title="Store artefacts with location coordinates, mutual IDs, and timestamps"
-                        description={
-                            <>
-                                using <Code>react-native-mmkv</Code>.
-                            </>
-                        }
-                    />
-                </List>
+                <p>
+                I built Prototype 1 using <Bold>React Native </Bold>within a week, taking on the role of the sole developer in our team.
+                </p>
+                <Callout>
+                    <List
+                        title={
+                            <p> I ensured the prototype meets these key
+                                <b className="font-semibold"> experience requirements:</b></p>
+                        }>
+                        <ListItem
+                            icon="📍"
+                            title="Location Awareness"
+                            description="Detect user’s current location for contextually relevant artefacts."
+                        />
+                        <ListItem
+                            icon="🤝"
+                            title="Social Context Awareness"
+                            description="Identify mutuals nearby to spark shared reminiscing."
+                        />
+                        <ListItem
+                            icon="🔒"
+                            title="Privacy Controls"
+                            description="Allow users to hide visibility, enabling private reflection."
+                        />
+                        <ListItem
+                            icon="🖼️"
+                            title="Contextual Artefacts"
+                            description="Display artefacts filtered by location and mutuals, enhancing relevance."
+                        />
+                    </List>
+                </Callout>
+                <Callout>
+                    <List
+                        title={
+                            <p><b className="font-semibold">How it Works:</b></p>
+                        }>
+                        <ListItem
+                            icon="📍"
+                            title="Get user's coordinate using GPS"
+                            description={
+                                <>
+                                    via <Code>react-native-community/geolocation</Code>.
+                                </>
+                            }
+                        />
+                        <ListItem
+                            icon="🛜"
+                            title="Detect mutuals nearby using WiFi and Bluetooth"
+                            description={
+                                <>
+                                    via <Code>react-native-multipeer-connectivity</Code>.
+                                </>
+                            }
+                        />
+                        <ListItem
+                            icon="💾"
+                            title="Store artefacts with location coordinates, mutual IDs, and timestamps"
+                            description={
+                                <>
+                                    using <Code>react-native-mmkv</Code>.
+                                </>
+                            }
+                        />
+                    </List>
+                </Callout>
             </SectionWrapper>
+
+
+            {/* Workshop Prototype */}
+            <section>
+                <div className="max-h-[95vh] overflow-hidden place-content-center">
+                    <Image
+                        src={workshopKopKen}
+                        alt="Developing prototype using React Native."
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto'
+                        }}
+                        quality={100}
+                    />
+                </div>
+            </section>
+
+            <SectionWrapper id="Prototype 1 Insights">
+                <HeadingBlock
+                    subtitle="Prototype 1 Insights"
+                    title="What We Learned from User Testing"
+                />
+                <p>
+                    Prototype 1 <Bold>successfully validated </Bold>both hypotheses across both use cases:
+                </p>
+                <Callout>
+                    <List title={
+                        <b className="font-semibold">Reminiscing Together (UC1)</b>
+                    }>
+                        <ListItem
+                            icon="✅"
+                            title="Conversation sparked"
+                            description="Artefacts brought shared memories to life, leading to fun and meaningful chats with mutuals."
+                        />
+                        <ListItem
+                            icon="✅"
+                            title="Users loved connecting"
+                            description="The prototype made reconnecting with friends through shared experiences simple and enjoyable."
+                        />
+                        <ListItem
+                            icon="🎯"
+                            title="Needs clarity"
+                            description="Users struggled to see how artefacts, locations, and social context connected, suggesting clearer visuals or cues are needed."
+                        />
+                    </List>
+                </Callout>
+                <Callout>
+                    <List
+                        title={
+                            <b className="font-semibold">Ghost Mode for Privacy (UC2)</b>
+                        }
+                    >
+                        <ListItem
+                            icon="✅"
+                            title="Users felt safer"
+                            description="Ghost mode gave users privacy while staying curious about nearby friends."
+                        />
+                        <ListItem
+                            icon="✅"
+                            title="Flexibility was key"
+                            description="The toggles let users choose between privacy and social interaction with ease."
+                        />
+                        <ListItem
+                            icon="🎯"
+                            title="Needs simplification"
+                            description="Toggles were a bit confusing at first, pointing to a need for clearer design and labels."
+                        />
+                    </List>
+                </Callout>
+            </SectionWrapper>
+
+
         </ main >
     );
 
