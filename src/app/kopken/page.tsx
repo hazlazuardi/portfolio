@@ -2,6 +2,8 @@ import Image from "next/image";
 import A from "./components/A";
 import thatBench from '../../../public/kopken/images/that-bench.jpg'
 import TableOfContent from "./components/TableOfContents";
+import FigmaEmbed from "./components/FigmaEmbed";
+
 import journalPapers from '../../../public/kopken/images/journal-papers.png'
 import taskFlows1 from '../../../public/kopken/images/task-flows-1.png'
 import taskFlows2 from '../../../public/kopken/images/task-flows-2.png'
@@ -9,7 +11,9 @@ import taskFlows3 from '../../../public/kopken/images/task-flows-3.png'
 import designingProbe from '../../../public/kopken/images/designing-probe.png'
 import developingPrototype from '../../../public/kopken/images/developing-prototype.png'
 import workshopKopKen from '../../../public/kopken/images/workshop-kopken.png'
-import FigmaEmbed from "./components/FigmaEmbed";
+import oldModeToggle from '../../../public/kopken/images/old-mode-toggle.png'
+import newModeToggle from '../../../public/kopken/images/new-mode-toggle.png'
+
 
 const images = [
     "ghost-mode.png",
@@ -97,7 +101,7 @@ const ListItem = ({
                         {title}
                     </p>
                 )}
-                {description && <p>{description}</p>}
+                {description && <>{description}</>}
             </div>
         </li>
     );
@@ -151,7 +155,8 @@ const titles = [
     "Prototype 1 Objectives",
     "Prototype 1 Task Flows",
     "Prototype 1 Development",
-    "Prototype 1 Insights"
+    "Prototype 1 Insights",
+    "Refinements 1"
 ]
 
 export default function KopKenPage() {
@@ -776,7 +781,7 @@ export default function KopKenPage() {
                     title="From Concept to Code"
                 />
                 <p>
-                I built Prototype 1 using <Bold>React Native </Bold>within a week, taking on the role of the sole developer in our team.
+                    I built Prototype 1 using <Bold>React Native </Bold>within a week, taking on the role of the sole developer in our team.
                 </p>
                 <Callout>
                     <List
@@ -914,6 +919,98 @@ export default function KopKenPage() {
             </SectionWrapper>
 
 
+            {/* Refinements 1 */}
+            <SectionWrapper id="Refinements 1">
+                <HeadingBlock
+                    subtitle="Refinement 1"
+                    title="Simplified Reminiscing Modes"
+                />
+
+                {/* Images */}
+                <div className="flex flex-col gap-16 py-6">
+                    <div className="flex flex-col md:flex-row gap-6 items-center">
+                        {/* Image Section */}
+                        <div className="w-full px-10 md:w-8/12 md:px-0 max-h-[95vh] overflow-hidden">
+                            <Image
+                                src={oldModeToggle}
+                                alt="Developing prototype using React Native."
+                                sizes="100vw"
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                }}
+                                quality={100}
+                            />
+                        </div>
+
+                        {/* Text Section */}
+                        <div className="w-full md:w-4/12 text-center md:text-left">
+                            <b className="font-semibold text-red-700 dark:text-red-400">Problem</b>
+                            <p>
+                                Redundant toggles caused confusion, making the test case difficult to complete.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-6 items-center">
+                        {/* Image Section */}
+                        <div className="w-full px-10 md:w-8/12 md:px-0 max-h-[95vh] overflow-hidden">
+                            <Image
+                                src={newModeToggle}
+                                alt="Developing prototype using React Native."
+                                sizes="100vw"
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                }}
+                                quality={100}
+                            />
+                        </div>
+
+                        {/* Text Section */}
+                        <div className="w-full md:w-4/12 text-center md:text-left">
+                            <b className="font-semibold text-green-600 dark:text-green-400">Solution</b>
+                            <p>
+                                A new simplified toggle now facilitates three distinct use cases.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <Callout className="w-full">
+                    <List
+                        title={
+                            <b className="font-semibold">Three modes of Reminiscing:</b>
+                        }
+                    >
+                        <ListItem
+                            icon="🔒"
+                            title="Private"
+                            description="You and mutuals are invisible to each other."
+                        />
+                        <ListItem
+                            icon="👻"
+                            title="Ghost"
+                            description={
+                                <>
+                                    <p>You can see others, but they cannot see you.</p>
+                                    <p>(from UC2)</p>
+                                </>
+                            }
+                        />
+                        <ListItem
+                            icon="💬"
+                            title="Social"
+                            description="You and mutuals are visible to each other."
+                        />
+                    </List>
+                </Callout>
+                <Callout>
+                    <p>
+                        <Bold>New Hypothesis:</Bold>
+                    </p>
+                    <p>
+                        Simplifying the toggle reduces friction and accommodates diverse user needs for reminiscing.</p>
+                </Callout>
+            </SectionWrapper>
         </ main >
     );
 
