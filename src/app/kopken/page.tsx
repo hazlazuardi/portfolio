@@ -1240,21 +1240,21 @@ export default function KopKenPage() {
                     title="What I Learned"
                 />
                 <p>
-                    I learned something important about nostalgia — it's both personal and social.
+                    I learned something important about nostalgia — it&apos;s both personal and social.
                     When you visit familiar places or experience certain things, they can bring back
-                    memories. But what's really special is sharing these memories with others.
-                    This insight changed how I think about creating social features — it's important
+                    memories. But what&apos;s really special is sharing these memories with others.
+                    This insight changed how I think about creating social features — it&apos;s important
                     to consider not just the memory itself, but when and how people share it.
                 </p>
                 <p>
                     While leading a team of four people, I learned valuable lessons about teamwork and
                     staying focused. We had a lot of ideas but limited time, so I had to carefully
-                    choose which features to work on. I picked the ones that matched our team's skills
+                    choose which features to work on. I picked the ones that matched our team&apos;s skills
                     and would have the biggest positive impact.
                 </p>
                 <p>
                     We reviewed existing research and gathered user feedback to guide our design decisions.
-                    This approach helped us create features that actually met users' needs. Throughout the
+                    This approach helped us create features that actually met users&apos; needs. Throughout the
                     project, I built functional prototypes using React Native, including features that could
                     display artefacts based on location and social context. This challenged me to grow beyond
                     basic app development skills.
