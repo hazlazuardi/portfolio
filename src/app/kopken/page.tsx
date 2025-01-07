@@ -9,10 +9,15 @@ import taskFlows1 from '../../../public/kopken/images/task-flows-1.png'
 import taskFlows2 from '../../../public/kopken/images/task-flows-2.png'
 import taskFlows3 from '../../../public/kopken/images/task-flows-3.png'
 import designingProbe from '../../../public/kopken/images/designing-probe.png'
+import thumbnailAdProbe from '../../../public/kopken/images/thumbnail-ad-probe.png'
+import thumbnailAdDio from '../../../public/kopken/images/thumbnail-ad-dio.png'
+import thumbnailDio from '../../../public/kopken/images/thumbnail-dio.png'
 import developingPrototype from '../../../public/kopken/images/developing-prototype.png'
 import workshopKopKen from '../../../public/kopken/images/workshop-kopken.png'
 import oldModeToggle from '../../../public/kopken/images/old-mode-toggle.png'
 import newModeToggle from '../../../public/kopken/images/new-mode-toggle.png'
+import taskFlows4 from '../../../public/kopken/images/task-flows-4.png'
+import taskFlows5 from '../../../public/kopken/images/task-flows-5.png'
 
 
 const images = [
@@ -138,10 +143,12 @@ const Code = ({
     children: React.ReactNode;
     className?: string;
 }) => (
-    <code className={`${className} bg-gray-200 dark:bg-gray-700 px-1 rounded`}>
+    <code
+        className={`${className} bg-gray-200 dark:bg-gray-700 px-1 rounded inline-block`}
+    >
         {children}
     </code>
-)
+);
 
 const titles = [
     'UI',
@@ -152,11 +159,10 @@ const titles = [
     "Key Insights",
     "Target Audience",
     "Design Implications and Opportunities",
-    "Prototype 1 Objectives",
-    "Prototype 1 Task Flows",
-    "Prototype 1 Development",
-    "Prototype 1 Insights",
-    "Refinements 1"
+    "Prototype 1",
+    "Prototype 2",
+    "What's Next for KopKen?",
+    "Reflection"
 ]
 
 export default function KopKenPage() {
@@ -424,6 +430,7 @@ export default function KopKenPage() {
                 <FigmaEmbed
                     src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1159-6966&embed-host=share"
                     caption="Mapping Cultural Probe Insights to Research Questions"
+                    thumbnail={thumbnailAdProbe}
                 />
             </section>
 
@@ -618,16 +625,18 @@ export default function KopKenPage() {
                 <FigmaEmbed
                     src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1545-5990&embed-host=share"
                     caption="Design Implications from Reviewed Journals."
+                    thumbnail={thumbnailDio}
                 />
                 <FigmaEmbed
                     src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1093-5027&embed-host=share"
                     caption="Grouping Insights from Literature into Themes."
+                    thumbnail={thumbnailAdDio}
                 />
 
             </section>
 
             {/* Prototype 1 Objectives */}
-            <SectionWrapper id="Prototype 1 Objectives">
+            <SectionWrapper id="Prototype 1">
                 <HeadingBlock
                     subtitle="Prototype 1 Objectives"
                     title="Focusing on Social Reminiscing and Privacy"
@@ -820,27 +829,27 @@ export default function KopKenPage() {
                             icon="📍"
                             title="Get user's coordinate using GPS"
                             description={
-                                <>
-                                    via <Code>react-native-community/geolocation</Code>.
-                                </>
+                                <p>
+                                    via <Code>react-native-community/geolocation</Code>
+                                </p>
                             }
                         />
                         <ListItem
                             icon="🛜"
                             title="Detect mutuals nearby using WiFi and Bluetooth"
                             description={
-                                <>
-                                    via <Code>react-native-multipeer-connectivity</Code>.
-                                </>
+                                <p>
+                                    via <Code>react-native-multipeer-connectivity</Code>
+                                </p>
                             }
                         />
                         <ListItem
                             icon="💾"
                             title="Store artefacts with location coordinates, mutual IDs, and timestamps"
                             description={
-                                <>
-                                    using <Code>react-native-mmkv</Code>.
-                                </>
+                                <p>
+                                    using <Code>react-native-mmkv</Code>
+                                </p>
                             }
                         />
                     </List>
@@ -864,6 +873,7 @@ export default function KopKenPage() {
                 </div>
             </section>
 
+            {/* Prototype 1 Insights */}
             <SectionWrapper id="Prototype 1 Insights">
                 <HeadingBlock
                     subtitle="Prototype 1 Insights"
@@ -1010,6 +1020,249 @@ export default function KopKenPage() {
                     <p>
                         Simplifying the toggle reduces friction and accommodates diverse user needs for reminiscing.</p>
                 </Callout>
+            </SectionWrapper>
+
+
+            {/* Prototype 2 Objectives */}
+            <SectionWrapper id="Prototype 2">
+                <HeadingBlock
+                    subtitle="Prototype 2 Objectives"
+                    title="Deepening Connections Through Artefacts"
+                />
+                <p>
+                    Building on the foundation of Prototype 1,
+                    Prototype 2 explores how artefacts can foster deeper
+                    connections by allowing users to compare past and present
+                    moments while offering more control over their memories.
+                </p>
+                <List
+                    title={
+                        <p>Prototype 2 <b>explores:</b></p>
+                    }>
+                    <ListItem
+                        icon="📸"
+                        title="Recreate photo artefacts at a location or with mutuals"
+                        description="e.g. standing at the same spot years later, recreating a group photo with friends."
+                    />
+                    <ListItem
+                        icon="🗑️"
+                        title="Remove artefacts"
+                        description="e.g. easily delete old memories that no longer feel relevant"
+                    />
+
+                </List>
+                <List
+                    title={
+                        <p><b className="font-semibold">Features developed:</b></p>
+                    }>
+                    <ListItem
+                        icon="📸"
+                        title="Recreate a photo artefact to relive and compare past and present moments"
+                        description="Overlay a past photo to align with today’s reality and see how things have changed."
+                    />
+                    <ListItem
+                        icon="👻"
+                        title="Remove individual artefacts or clear everything at once"
+                        description="Provide a simple way to organise and maintain artefacts as needed."
+                    />
+
+                </List>
+                <List
+                    title={
+                        <p><b className="font-semibold">Design opportunities addressed:</b></p>
+                    }>
+                    <ListItem
+                        icon="O4"
+                        title="Recognise contrasts in memories over time."
+                    />
+                    <ListItem
+                        icon="O5"
+                        title=" Provide control over artefacts to adapt to different situations."
+                    />
+                </List>
+                <List
+                    title={
+                        <p><b className="font-semibold">Hypotheses tested:</b></p>
+                    }>
+                    <ListItem
+                        icon="H3"
+                        title="Recreating artefacts will help highlight contrasts and foster a sense of meaning."
+                        className="w-auto mx-auto bg-kopken-primary-100 dark:bg-kopken-primary-950 text-black dark:text-slate-100 py-4 px-6 rounded-2xl"
+                    />
+                    <ListItem
+                        icon="H4"
+                        title="Providing control over artefacts ensures a safe and comfortable experience."
+                        className="w-auto mx-auto bg-kopken-primary-100 dark:bg-kopken-primary-950 text-black dark:text-slate-100 py-4 px-6 rounded-2xl"
+                    />
+                </List>
+            </SectionWrapper>
+
+
+            {/* Prototype 2 Task Flows */}
+            <SectionWrapper id="Prototype 2 Task Flows">
+                <HeadingBlock
+                    subtitle="Prototype 2 Task Flows"
+                    title="Exploring New Features"
+                    className="max-w-lg"
+                />
+                {/* <FigmaEmbed
+                    src="https://embed.figma.com/board/oqawMrhE5MWuPuihutCUbJ/DECO3500?node-id=1644-5989&embed-host=share"
+                    caption="Three main task flows to test."
+                /> */}
+                <figure className="mx-auto max-w-screen-lg max-h-[70vh] overflow-hidden place-content-start">
+                    <Image
+                        src={taskFlows4}
+                        alt="Recreate an Artefact: Allows users to relive a moment by overlaying and capturing a new photo at the same location."
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }}
+                        className="rounded-md"
+                    />
+                    <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                        Recreate an Artefact feature allows users to relive a moment by overlaying and capturing a new photo at the same location.
+                    </figcaption>
+                </figure>
+                <figure className="mx-auto max-w-screen-lg max-h-[70vh] overflow-hidden place-content-start">
+                    <Image
+                        src={taskFlows5}
+                        alt="Delete an Artefact feature simplifies management of memories by enabling removal of outdated or unwanted artefacts."
+                        sizes="100vw"
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }}
+                        className="rounded-md"
+                    />
+                    <figcaption className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                        Delete an Artefact feature simplifies management of memories by enabling removal of outdated or unwanted artefacts.
+                    </figcaption>
+                </figure>
+            </SectionWrapper>
+
+
+            {/* Prototype 2 Development */}
+            <SectionWrapper id="Prototype 2 Development">
+                <HeadingBlock
+                    subtitle="Prototype 2 Development"
+                    title="Expanding Functionality"
+                />
+                <p>
+                    Building upon Prototype 1, we explored additional design opportunities.
+                </p>
+                <Callout>
+                    <List
+                        title={
+                            <p> I ensured the prototype meets these key
+                                <b className="font-semibold"> experience requirements:</b></p>
+                        }>
+                        <ListItem
+                            icon="📸"
+                            title="Recreate Artefacts"
+                            description="Allow users to select and recreate a photo artefact."
+                        />
+                        <ListItem
+                            icon="⚙️"
+                            title="Artefact Control"
+                            description="Provide the ability to delete individual artefacts or erase all."
+                        />
+                    </List>
+                </Callout>
+                <Callout>
+                    <List
+                        title={
+                            <p><b className="font-semibold">How it Works:</b></p>
+                        }>
+                        <ListItem
+                            icon="📸"
+                            title="Take then recreate a photo"
+                            description={
+                                <p>
+                                    Overlays the original photo on the viewfinder for precise alignment, powered by <Code>react-native-vision-camera</Code>
+                                </p>
+                            }
+                        />
+                        <ListItem
+                            icon="🗑️"
+                            title="Delete artefact"
+                            description={
+                                <p>
+                                    Removes artefacts by ID or clears the collection from storage, using <Code>react-native-mmkv</Code>
+                                </p>
+                            }
+                        />
+                    </List>
+                </Callout>
+            </SectionWrapper>
+
+
+            {/* What's Next for KopKen */}
+            <SectionWrapper id="What's Next for KopKen?">
+                <HeadingBlock
+                    subtitle="What’s Next for KopKen?"
+                    title="Iterating on Insights and Expanding the Scope"
+                />
+                <p>
+                    <Bold>We showcased Prototype 2</Bold> during our workshop.
+                    Developed in parallel with Prototype 1, it laid the
+                    groundwork for new opportunities but hasn’t yet
+                    addressed earlier insights.
+                </p>
+                <Callout>
+                    <List
+                        title={
+                            <p> Moving forward, we have several
+                                <b className="font-semibold"> opportunities to explore:</b></p>
+                        }>
+                        <ListItem
+                            icon="O6"
+                            title="Allow the exchange of artefacts that complement each other"
+                        />
+                        <ListItem
+                            icon="O7"
+                            title="Enable users to simultaneously engage with physical movement and memory preservation"
+                        />
+                    </List>
+                </Callout>
+                <p>
+                    The next iteration (Prototype 3) will build on these opportunities while addressing
+                    key issues discovered in user testing.
+                </p>
+            </SectionWrapper>
+
+
+
+            {/* What's Next for KopKen */}
+            <SectionWrapper id="Reflection" className="pb-60">
+                <HeadingBlock
+                    subtitle="Reflection"
+                    title="What I Learned"
+                />
+                <p>
+                    I learned something important about nostalgia — it's both personal and social.
+                    When you visit familiar places or experience certain things, they can bring back
+                    memories. But what's really special is sharing these memories with others.
+                    This insight changed how I think about creating social features — it's important
+                    to consider not just the memory itself, but when and how people share it.
+                </p>
+                <p>
+                    While leading a team of four people, I learned valuable lessons about teamwork and
+                    staying focused. We had a lot of ideas but limited time, so I had to carefully
+                    choose which features to work on. I picked the ones that matched our team's skills
+                    and would have the biggest positive impact.
+                </p>
+                <p>
+                    We reviewed existing research and gathered user feedback to guide our design decisions.
+                    This approach helped us create features that actually met users' needs. Throughout the
+                    project, I built functional prototypes using React Native, including features that could
+                    display artefacts based on location and social context. This challenged me to grow beyond
+                    basic app development skills.
+                </p>
+                <p>
+                    Looking back, this course was a fun journey that taught me everything from understanding social
+                    and mobile design to building cool features that people actually appreciate.
+                </p>
             </SectionWrapper>
         </ main >
     );

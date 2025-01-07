@@ -62,13 +62,15 @@ export default function TableOfContent({ titles }: { titles: Array<string> }) {
                 className={`backdrop-blur-xl bg-kopken-primary-100/70 dark:bg-kopken-primary-950/70 shadow-xl fixed inset-y-0 right-0 w-80 max-w-full transform ${isOpen ? "translate-x-0" : "translate-x-full"
                     } transition-transform duration-300 ease-in-out z-40 flex items-center`}
             >
-                <div className="px-4 py-8 flex flex-col gap-3 w-full">
+                <div className="px-4 py-8 flex flex-col gap-3 w-full max-h-screen overflow-y-auto">
                     {titles.map((title, index) => (
                         <a
                             href={`#${title}`}
                             key={index}
                             onClick={(event) => handleClick(event, title)}
-                            className={`${activeTitle === title ? "scale-105 opacity-100 font-semibold" : "opacity-70"
+                            className={`${activeTitle === title
+                                    ? "scale-105 opacity-100 font-semibold"
+                                    : "opacity-70"
                                 } ml-2  transition-transform transform  hover:scale-105 hover:opacity-100`}
                         >
                             {title}
@@ -76,7 +78,6 @@ export default function TableOfContent({ titles }: { titles: Array<string> }) {
                     ))}
                 </div>
             </div>
-
             {/* Button */}
             <button
                 onClick={toggleTOC}
