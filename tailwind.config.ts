@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: "#1a73e8",
+        telkom: "#D51100",
+        uq: "#512479",
+        ui: "#FCDD19",
         kopken: {
           primary: {
             DEFAULT: "#9747FF",
@@ -33,7 +36,7 @@ export default {
         kopken: ["var(--font-poppins)"],
         playpen: ["var(--font-playpen)"],
         philosopher: ["var(--font-philosopher)"],
-        montserrat: ["var(--font-montserrat)"]        
+        montserrat: ["var(--font-montserrat)"]
       },
       fontSize: {
         heading: ["32px", "auto"],
@@ -42,6 +45,24 @@ export default {
         caption: ["12px", "150%"],
         code: ["14px", "150%"],
       },
+    },
+    keyframes: {
+      'dynamic-in': {
+        '0%': { transform: 'scale(0)', opacity: '0' },
+        '20%': { transform: 'scale(1.2)', opacity: '1' },
+        '40%': { transform: 'scale(1)', opacity: '1' },
+        '100%': { transform: 'scale(1)', opacity: '1' },
+      },
+      'dynamic-out': {
+        '0%': { transform: 'scale(1)', opacity: '1' },
+        '20%': { transform: 'scale(1.2)', opacity: '1' },
+        '40%': { transform: 'scale(0)', opacity: '0' },
+        '100%': { transform: 'scale(0)', opacity: '0' },
+      },
+    },
+    animation: {
+      'dynamic-in': 'dynamic-in 2s ease-in-out forwards',
+      'dynamic-out': 'dynamic-out 2s ease-in-out forwards',
     },
   },
   plugins: [],

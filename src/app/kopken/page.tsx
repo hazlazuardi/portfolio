@@ -151,6 +151,7 @@ const Code = ({
 );
 
 const titles = [
+    'Cover',
     'UI',
     'Overview',
     'Where it All Begin',
@@ -172,7 +173,7 @@ export default function KopKenPage() {
             <TableOfContent titles={titles} />
 
             {/* Hero Section */}
-            <SectionWrapper className="h-screen justify-end !gap-0 pb-16">
+            <SectionWrapper className="h-screen justify-end !gap-0 pb-24">
                 <Image
                     src={'/logo.png'}
                     width={100}
@@ -184,12 +185,12 @@ export default function KopKenPage() {
                 <p className="font-semibold text-slate-500 dark:text-slate-400 mt-4">UX Case Study</p>
                 <h1 className="text-heading font-semibold">
                     <span className="font-bold text-kopken-primary-500">KopKen </span>
-                    － Designing Context-Aware Nostalgia Experiences
+                    － Fostering Conversation Through Nostalgia
                 </h1>
             </SectionWrapper>
 
             {/* Info Section */}
-            <SectionWrapper>
+            <SectionWrapper id="Cover">
                 <div>
                     <p className="font-bold tracking-wider">Role</p>
                     <p>Team Leader</p>

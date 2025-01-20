@@ -27,3 +27,7 @@ body {
 h1 {
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif; /* Match h1 with Poppins fallback */
 }
+
+b {
+  font-weight: 600;
+}
