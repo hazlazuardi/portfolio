@@ -41,36 +41,37 @@ export default function HomePage() {
           {/* Cards */}
 
           {/* Card */}
-          <div className="w-full mx-auto flex flex-col sm:flex-row bg-white border border-slate-100 rounded-3xl overflow-hidden drop-shadow-lg">
+          <div className="w-full mx-auto flex flex-col sm:flex-row bg-white hover:bg-kopken-primary-50 border border-slate-100 rounded-3xl overflow-hidden drop-shadow-lg group">
             {/* Image Section */}
             <div
-              className="relative w-full sm:flex-1 sm:h-auto aspect-video"
+              className="relative w-full sm:flex-1 sm:h-auto aspect-video overflow-hidden"
             >
               <Image
                 src={KopKenThumbnail}
                 alt="KopKen Thumbnail"
-                fill
-                quality={100}
+                className="transition-transform duration-300 ease-in-out scale-105 group-hover:scale-100"
                 style={{
                   objectFit: "cover",
                   objectPosition: "left top",
+                  width: "100%",
+                  height: "100%",
+                  transformOrigin: "left top", // Ensures scaling happens from the center
                 }}
               />
             </div>
 
             {/* Text Section */}
-            <div className="flex flex-col gap-4 p-6 max-w-xl sm:max-w-md lg:max-w-md sm:flex-shrink-0">
-              <h2 className="text-lg text-black font-semibold">
+            <div className="flex flex-col gap-4 p-6 max-w-2xl sm:max-w-sm lg:max-w-lg sm:flex-shrink-0  transition-all ease-in-out bg-transparent">
+              <h2 className="text-3xl text-black font-semibold">
                 KopKen — Fostering Conversation Through Nostalgia
               </h2>
               <p className="text-black mb-4">
                 An iOS app that uses context-aware technology to help people capture, relive, and share memories with others and fostering nostalgic conversations among friends and family.
               </p>
-              <Link href="/kopken" className="bg-slate-700 hover:bg-slate-600 transition-all ease-in-out w-fit px-6 py-3 rounded-3xl mt-auto text-white">
+              <Link href="/kopken" className="bg-kopken-primary-500 transition-all ease-in-out w-fit px-6 py-3 rounded-3xl mt-auto text-white">
                 Read Case Study
               </Link>
             </div>
-
           </div>
 
         </div>
