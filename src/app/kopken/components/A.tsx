@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {
@@ -14,14 +15,14 @@ export default function A({ variant, href, isNewTab, label }: Props) {
     }
 
     return (
-        <a
+        <Link
             className={styles[variant]}
             href={href}
             target={isNewTab ? "_blank" : ""}
             rel="noreferrer"
         >
             {label}
-        </a>
+        </Link>
     )
 
 }

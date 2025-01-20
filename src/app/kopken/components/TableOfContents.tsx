@@ -1,9 +1,11 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function TableOfContent({ titles }: { titles: Array<string> }) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeTitle, setActiveTitle] = useState<string | null>(null);
+    const [showButton, setShowButton] = useState(false);
 
     const toggleTOC = () => setIsOpen(!isOpen);
 
@@ -19,9 +21,9 @@ export default function TableOfContent({ titles }: { titles: Array<string> }) {
         };
 
         const observer = new IntersectionObserver(handleIntersection, {
-            root: null, // Use the viewport as the root
-            rootMargin: "-50% 0px -50% 0px", // Adjust to better detect mid-section
-            threshold: [0, 0.5, 1], // Trigger at various intersection percentages
+            root: null,
+            rootMargin: "-50% 0px -50% 0px",
+            threshold: [0, 0.5, 1],
         });
 
         sections.forEach((section) => {
@@ -31,21 +33,17 @@ export default function TableOfContent({ titles }: { titles: Array<string> }) {
         });
 
         return () => {
-            observer.disconnect(); // Cleanup observer
+            observer.disconnect();
         };
     }, [titles]);
 
-    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-        event.preventDefault();
-
-        const section = document.getElementById(id);
-        if (section) {
-            section.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-            });
+    useEffect(() => {
+        if (activeTitle === "Cover" || activeTitle === null) {
+            setShowButton(false);
+        } else {
+            setShowButton(true);
         }
-    };
+    }, [activeTitle]);
 
     return (
         <div>
@@ -63,37 +61,64 @@ export default function TableOfContent({ titles }: { titles: Array<string> }) {
                     } transition-transform duration-300 ease-in-out z-40 flex items-center`}
             >
                 <div className="px-4 py-8 flex flex-col gap-3 w-full max-h-screen overflow-y-auto">
-                    {titles.map((title, index) => (
-                        <a
+                    {titles.slice(1).map((title, index) => (
+                        <Link
                             href={`#${title}`}
                             key={index}
-                            onClick={(event) => handleClick(event, title)}
+                            onClick={(event) => {
+                                event.preventDefault();
+                                document.getElementById(title)?.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                });
+                            }}
                             className={`${activeTitle === title
-                                    ? "scale-105 opacity-100 font-semibold"
-                                    : "opacity-70"
-                                } ml-2  transition-transform transform  hover:scale-105 hover:opacity-100`}
+                                ? "scale-105 opacity-100 font-semibold"
+                                : "opacity-70"
+                                } ml-2 transition-transform transform hover:scale-105 hover:opacity-100`}
                         >
                             {title}
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>
             {/* Button */}
-            <button
-                onClick={toggleTOC}
-                className="hover:scale-105 transition-transform duration-200 shadow-md rounded-full backdrop-blur-2xl bg-kopken-primary-400/70 dark:bg-kopken-primary-500/50 p-3 fixed bottom-6 right-6 z-50"
-                aria-label="table of contents button"
+            <div
+                className={`fixed bottom-6 right-6 z-50 ${showButton || isOpen
+                    ? "animate-dynamic-in delay-1000"
+                    : "animate-dynamic-out delay-1000"
+                    }`}
             >
-                {isOpen ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
-                    </svg>
-                )}
-            </button>
+                <button
+                    onClick={toggleTOC}
+                    className="hover:scale-105 transition-transform duration-200 shadow-md rounded-full backdrop-blur-2xl bg-kopken-primary-400/70 dark:bg-kopken-primary-500/50 p-3"
+                    aria-label="table of contents button"
+                >
+                    {isOpen ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="size-6"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    ) : (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="size-6"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+                        </svg>
+                    )}
+                </button>
+            </div>
         </div>
     );
 }

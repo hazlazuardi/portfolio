@@ -1,6 +1,7 @@
 import Image from "next/image";
 import A from "./components/A";
 import thatBench from '../../../public/kopken/images/that-bench.jpg'
+import { Icons } from "@/components/Icons";
 import TableOfContent from "./components/TableOfContents";
 import FigmaEmbed from "./components/FigmaEmbed";
 
@@ -151,6 +152,7 @@ const Code = ({
 );
 
 const titles = [
+    'Cover',
     'UI',
     'Overview',
     'Where it All Begin',
@@ -172,24 +174,19 @@ export default function KopKenPage() {
             <TableOfContent titles={titles} />
 
             {/* Hero Section */}
-            <SectionWrapper className="h-screen justify-end !gap-0 pb-16">
-                <Image
-                    src={'/logo.png'}
-                    width={100}
-                    height={100}
-                    alt="KopKen Logo"
-                    priority={true}
-                    quality={100}
-                />
+            <SectionWrapper className="h-screen justify-end !gap-0 pb-24">
+                <div className="w-24 h-24">
+                    <Icons.KopKen />
+                </div>
                 <p className="font-semibold text-slate-500 dark:text-slate-400 mt-4">UX Case Study</p>
                 <h1 className="text-heading font-semibold">
                     <span className="font-bold text-kopken-primary-500">KopKen </span>
-                    － Designing Context-Aware Nostalgia Experiences
+                    － Fostering Conversation Through Nostalgia
                 </h1>
             </SectionWrapper>
 
             {/* Info Section */}
-            <SectionWrapper>
+            <SectionWrapper id="Cover">
                 <div>
                     <p className="font-bold tracking-wider">Role</p>
                     <p>Team Leader</p>
