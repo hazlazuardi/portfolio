@@ -44,7 +44,7 @@ export default function HomePage() {
           {/* Cards */}
 
           {/* Card */}
-          <div className="w-full mx-auto flex flex-col sm:flex-row bg-white hover:bg-kopken-primary-50 border border-slate-100 rounded-3xl overflow-hidden drop-shadow-lg group">
+          <div className="w-full mx-auto flex flex-col sm:flex-row bg-white hover:bg-kopken-primary-50 border border-slate-100 rounded-3xl overflow-hidden shadow-lg group">
             {/* Image Section */}
             <div
               className="relative w-full sm:flex-1 sm:h-auto aspect-video overflow-hidden"
