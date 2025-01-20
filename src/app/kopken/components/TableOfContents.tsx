@@ -60,7 +60,7 @@ export default function TableOfContent({ titles }: { titles: Array<string> }) {
                     } transition-transform duration-300 ease-in-out z-40 flex items-center`}
             >
                 <div className="px-4 py-8 flex flex-col gap-3 w-full max-h-screen overflow-y-auto">
-                    {titles.map((title, index) => (
+                    {titles.slice(1).map((title, index) => (
                         <a
                             href={`#${title}`}
                             key={index}
