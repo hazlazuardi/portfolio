@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat_Alternates, Philosopher, Playpen_Sans, Poppins } from "next/font/google";
 
 import "./globals.css";
+import Navbar from "@/components/Navbar/Navbar";
 
 export const metadata: Metadata = {
   title: "Haz Lazuardi",
@@ -45,6 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${playpen.variable} ${philosopher.variable} ${montserrat.variable}`}>
       <body>
+        <Navbar />
         {children}
       </body>
     </html>

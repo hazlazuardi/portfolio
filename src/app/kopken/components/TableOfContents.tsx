@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function TableOfContent({ titles }: { titles: Array<string> }) {
@@ -61,7 +62,7 @@ export default function TableOfContent({ titles }: { titles: Array<string> }) {
             >
                 <div className="px-4 py-8 flex flex-col gap-3 w-full max-h-screen overflow-y-auto">
                     {titles.slice(1).map((title, index) => (
-                        <a
+                        <Link
                             href={`#${title}`}
                             key={index}
                             onClick={(event) => {
@@ -77,7 +78,7 @@ export default function TableOfContent({ titles }: { titles: Array<string> }) {
                                 } ml-2 transition-transform transform hover:scale-105 hover:opacity-100`}
                         >
                             {title}
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

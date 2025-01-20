@@ -4,6 +4,7 @@
 import UniquePersonalStatementSection from "./section/UniquePersonalStatementSection";
 import KopKenThumbnail from "../../public/kopkenThumbnail.png"
 import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -65,9 +66,9 @@ export default function HomePage() {
               <p className="text-black mb-4">
                 An iOS app that uses context-aware technology to help people capture, relive, and share memories with others and fostering nostalgic conversations among friends and family.
               </p>
-              <a href="/kopken" className="bg-slate-700 hover:bg-slate-600 transition-all ease-in-out w-fit px-6 py-3 rounded-3xl mt-auto text-white">
+              <Link href="/kopken" className="bg-slate-700 hover:bg-slate-600 transition-all ease-in-out w-fit px-6 py-3 rounded-3xl mt-auto text-white">
                 Read Case Study
-              </a>
+              </Link>
             </div>
 
           </div>
