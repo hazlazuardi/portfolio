@@ -49,7 +49,7 @@ export default function HomePage() {
               <Image
                 src={KopKenThumbnail}
                 alt="KopKen Thumbnail"
-                className="transition-transform duration-300 ease-in-out scale-150 group-hover:scale-110"
+                className="transition-transform duration-300 ease-in-out scale-150 group-hover:scale-110 pointer-events-none"
                 style={{
                   objectFit: "cover",
                   objectPosition: "left top",
