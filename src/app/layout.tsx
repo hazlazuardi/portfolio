@@ -3,6 +3,7 @@ import { Montserrat_Alternates, Philosopher, Playpen_Sans, Poppins } from "next/
 
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Haz Lazuardi",
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
