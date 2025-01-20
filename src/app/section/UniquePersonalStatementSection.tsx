@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Icons } from "@/components/Icons";
 
 const audienceValues = [
-  'Anyone',
+  // 'Anyone',
   'Recruiters',
   'Startups'] as const;
 type Audience = typeof audienceValues[number]
@@ -17,10 +17,10 @@ const copywriting: Record<Audience, {
     headline: "Graduate Designer & Developer with Work Experience",
     subheadline: "UX Design and Computer Science graduate with Agile internship experience at Indonesia's largest telecom company. Seeking Frontend Developer or UX Designer roles in Australia."
   },
-  'Anyone': {
-    headline: "Crafting Digital Products that Work",
-    subheadline: "I love building beautiful things that make everyday life a little bit easier."
-  },
+  // 'Anyone': {
+  //   headline: "Crafting Digital Products that Work",
+  //   subheadline: "I love building beautiful things that make everyday life a little bit easier."
+  // },
   'Startups': {
     headline: "Building MVPs Quickly and Thoughtfully",
     subheadline: "I take ideas and turn them into working products. Whether it’s designing, coding, or deploying, I work fast and stay focused on what matters most."
