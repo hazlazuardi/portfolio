@@ -1,7 +1,7 @@
 
 // type Props = {}
 
-import UniquePersonalStatementSection from "./section/UniquePersonalStatementSection";
+import UniquePersonalStatementSection from "./sections/UniquePersonalStatementSection";
 import KopKenThumbnail from "../../public/kopkenThumbnail.png"
 import Image from "next/image";
 import Link from "next/link";
