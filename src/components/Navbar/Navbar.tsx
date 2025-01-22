@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
     return (
-        <nav className="w-screen py-4 fixed top-0 place-content-center z-10 text-white mix-blend-difference gradient-mask">
+        <nav className="w-screen py-4 fixed top-0 place-content-center z-50 text-white mix-blend-difference gradient-mask">
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-row justify-between">
                 {/* Logo */}
                 <Link aria-label='Go to Home' href='/' className="w-16 place-content-center">
@@ -13,7 +13,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Nav Links */}
-                <Link aria-label='Go to About page' href='#' className="flex flex-row gap-6 items-center ">
+                <Link aria-label='Go to About page' href='/about' className="flex flex-row gap-6 items-center ">
                     <p className="text-xl">About</p>
                 </Link>
             </div>

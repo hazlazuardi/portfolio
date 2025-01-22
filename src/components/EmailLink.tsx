@@ -9,7 +9,7 @@ export default function EmailLink({ email, children }: { email: string; children
             href={`mailto:${email}?subject=${subject}&body=${body}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline"
+            className="hover:text-blue-500 font-semibold transition-all ease-in-out duration-150"
         >
             {children}
         </Link>
